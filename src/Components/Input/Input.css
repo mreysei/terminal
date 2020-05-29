@@ -1,0 +1,15 @@
+.Input > div::after {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  margin-bottom: -4px;
+  animation-name: inputText;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes inputText {
+  from { background-color: white; }
+  to { background-color: none; }
+}

@@ -1,0 +1,26 @@
+.Command {
+  margin-top: 2px;
+}
+
+.Command .username,
+.Command .root,
+.Command .directory,
+.Command .type {
+  font-weight: bold;
+}
+
+.Command .username {
+  color: #88e234;
+}
+
+.Command .directory {
+  color: #719ece;
+}
+
+.Command .type {
+  margin-right: .4rem;
+}
+
+.Command .output {
+  white-space: pre-wrap;
+}
