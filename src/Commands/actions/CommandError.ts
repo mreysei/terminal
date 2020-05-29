@@ -2,7 +2,8 @@ import { CommandAction } from "..";
 
 export const CommandError: CommandAction = ({
   name: "error",
-  action: () => {
-    return ["Oops! Ha ocurrido un error, resulta que ese comando no existe :("]
-  },
+  action: () => [
+    "Oops! Ha ocurrido un error, resulta que ese comando no existe :(",
+    "Prueba a escribir 'help', quizás te sea de ayuda",
+  ],
 })

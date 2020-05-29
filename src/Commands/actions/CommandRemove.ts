@@ -1,5 +1,4 @@
-import { CommandAction, containsAllParams } from "..";
-import { CommandError } from "./CommandError";
+import { CommandAction, containsAllParams, CommandError } from "..";
 
 export const CommandRemove: CommandAction = ({
   name: "rm",
@@ -15,8 +14,6 @@ export const CommandRemove: CommandAction = ({
 })
 
 const boom = () => {
-
-
 
   return [];
 }

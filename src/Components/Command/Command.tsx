@@ -23,8 +23,10 @@ export const Command: FC<CommandProps> = ({ username, directory, type, command, 
     <span className="directory">{directory || "~"}</span>
     <span className="type">{type || CommandType.default}</span>
     <span className="command-line">{command}</span>
-    {output != null && output.map((line: string, i) => (
-      <div className="output" key={`line-${i}`}>{line}</div>
-    ))}
+    {output != null && output.map(stringToHtml)}
   </div>
+)
+
+const stringToHtml = (line: string, i: number) => (
+  <div className="output" key={`line-${i}`} dangerouslySetInnerHTML={{ __html: line }}>{}</div>
 )

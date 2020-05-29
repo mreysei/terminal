@@ -4,8 +4,10 @@ import { CommandAction, getCommandByName } from '../../Commands';
 import './Terminal.css';
 
 export const Terminal = () => {
+  const getUsername = () => localStorage.getItem("username") || "anonymous";
   const [historic, setHistoric] = useState<Array<Command>>([]);
   const [logoEnable, setLogoEnable] = useState(true);
+  const [username, setUsername] = useState(getUsername());
 
   const onSendCommand = (command: Command) => {
     const input = command.command.split(" ");
@@ -21,13 +23,16 @@ export const Terminal = () => {
       command.output = output;
       setHistoric([...historic, command]);
     }
+
+    setUsername(getUsername());
   }
+
 
   return (
     <div className="Terminal">
       {logoEnable && <Logo />}
       <Historic commands={historic} />
-      <Input onEnter={onSendCommand} />
+      <Input username={username} onEnter={onSendCommand} />
     </div>
   )
 };

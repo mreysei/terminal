@@ -24,3 +24,32 @@
 .Command .output {
   white-space: pre-wrap;
 }
+
+.Command h3.inline {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.Command a {
+  color: lightblue;
+  text-decoration: none;
+  transition: color .5s;
+  font-weight: normal;
+}
+
+.Command a:hover {
+  color: lightcyan;
+}
+
+.Command hr {
+  height: 2px;
+  background-color: rgba(255,255,255,0.25);
+  border: none;
+  margin: 20px 0;
+}
+
+
+.Command .social img {
+  width: 12px;
+}
