@@ -1,0 +1,32 @@
+.Boom {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: blue;
+  color: white;
+  padding: calc(100vh / 10);
+  font-family:'Ubuntu Mono';
+}
+
+.Boom h1 {
+  font-size: calc(100vh / 8);
+  margin: 0;
+  margin-bottom: 4rem;
+}
+
+.Boom p {
+  font-size: calc(100vh / 30);
+}
+
+.Boom p.info {
+  margin-top: 8rem;
+  font-size: calc(100vh / 50);
+}
+
+.Boom img {
+  float:left;
+  margin-right: 4rem;
+  width: 18rem;
+}

@@ -1,4 +1,7 @@
+import React, { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
 import { CommandAction, containsAllParams, CommandError } from "..";
+import { Boom } from '../../Components/Boom/Boom';
 
 export const CommandRemove: CommandAction = ({
   name: "rm",
@@ -14,6 +17,6 @@ export const CommandRemove: CommandAction = ({
 })
 
 const boom = () => {
-
+  ReactDOM.render(<Boom />, document.getElementById('App'));
   return [];
 }
