@@ -4,6 +4,7 @@ export const CommandHelp: CommandAction = ({
   name: "help",
   description: "Lista los comandos que se pueden realizar",
   action: (params: string[] | undefined): string[] => {
+    const initialMessage = "Estos son los comandos visibles, además de estos hay otros escondidos... jeje"
     const commands = getAllCommands();
     const keys = (params !== undefined && params.length > 0) ? params : Object.keys(commands);
     return keys.reduce((accumulator, key) => {
@@ -12,7 +13,7 @@ export const CommandHelp: CommandAction = ({
         addCommand(accumulator, command);
       }
       return accumulator;
-    }, [] as string[]);
+    }, [initialMessage] as string[]);
   },
 })
 
