@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FC } from 'react';
-import { useKeyPress, useEnterPress, useDeletePress } from '../../Events';
+import { useEnterPress } from '../../Events';
 import { Command, CommandType } from '../Command/Command';
 import './Input.css';
 
@@ -10,22 +10,11 @@ interface InputProps {
 
 export const Input: FC<InputProps> = ({ onEnter, username }) => {
   const [input, setInput] = useState("");
-  const keyPressed = useKeyPress();
-  const deletePressed = useDeletePress();
   const enterPressed = useEnterPress();
 
   let inputForScroll: HTMLDivElement | null;
 
   useEffect(() => {
-    if (keyPressed !== "") {
-      setInput(input + keyPressed);
-    }
-
-    if (deletePressed && input.length > 0) {
-      const inputUpdated = input.substring(0, input.length - 1);
-      setInput(inputUpdated);
-    }
-
     if (enterPressed) {
       onEnter({
         username,
@@ -34,17 +23,20 @@ export const Input: FC<InputProps> = ({ onEnter, username }) => {
         command: input,
         output: [],
       });
-      setInput("");
-    }
 
-    if (inputForScroll !== null) {
-      inputForScroll.scrollIntoView({ behavior: "smooth" });
+      setInput("");
+      document.getElementById('input-disable')?.setAttribute("value", "");
+
+      if (inputForScroll !== null) {
+        inputForScroll.scrollIntoView({ behavior: "smooth" });
+      }
     }
-  }, [keyPressed, deletePressed, enterPressed]);
+  }, [enterPressed]);
 
   return (
     <div className="Input" ref={(element) => inputForScroll = element}>
       <Command username={username} command={input} />
+      <input id="input-disable" value={input} onChange={(e) => setInput(e.target.value)} />
     </div>
   );
 }

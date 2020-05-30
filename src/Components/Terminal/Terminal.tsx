@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Logo, Input, Historic, Command } from '..';
 import { CommandAction, getCommandByName } from '../../Commands';
 import './Terminal.css';
+import ReactDOM from 'react-dom';
 
 export const Terminal = () => {
   const getUsername = () => localStorage.getItem("username") || "anonymous";
@@ -27,6 +28,22 @@ export const Terminal = () => {
     setUsername(getUsername());
   }
 
+  const focus = () => {
+    const input = document.getElementById('input-disable')
+    const isFocused = document.activeElement === ReactDOM.findDOMNode(input);
+    if (input !== null && !isFocused) {
+      input.focus();
+    } else {
+
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('touchstart', focus);
+    window.addEventListener('touchend', focus);
+  }, []);
+
+  focus();
 
   return (
     <div className="Terminal">

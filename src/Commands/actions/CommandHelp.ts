@@ -4,9 +4,15 @@ export const CommandHelp: CommandAction = ({
   name: "help",
   description: "Lista los comandos que se pueden realizar",
   action: (params: string[] | undefined): string[] => {
-    const initialMessage = "Estos son los comandos visibles, además de estos hay otros escondidos... jeje"
-    const commands = getAllCommands();
-    const keys = (params !== undefined && params.length > 0) ? params : Object.keys(commands);
+    const commands = getAllCommands()
+    let initialMessage = "Estos son los comandos visibles, además de estos hay otros escondidos... jeje"
+    let keys = Object.keys(commands)
+
+    if (params !== undefined && params.length > 0) {
+      initialMessage = "";
+      keys = params;
+    }
+
     return keys.reduce((accumulator, key) => {
       const command = commands[key];
       if (command !== undefined && command.description !== undefined) {
@@ -18,7 +24,7 @@ export const CommandHelp: CommandAction = ({
 })
 
 const addCommand = (accumulator: string[], command: CommandAction) => {
-  const spaces = getSpaces(command.name, 36);
+  const spaces = getSpaces(command.name, 26);
   accumulator.push(`  ${command.name} ${spaces} - ${command.description}`)
   if (command.params !== undefined) {
     command.params.forEach((param) => addParam(accumulator, param));
@@ -27,7 +33,7 @@ const addCommand = (accumulator: string[], command: CommandAction) => {
 
 const addParam = (accumulator: string[], param: CommandParam) => {
   if (param.description !== undefined) {
-    const spaces = getSpaces(param.name, 32);
+    const spaces = getSpaces(param.name, 22);
     accumulator.push(`      ${param.name} ${spaces} - ${param.description}`)
   }
 }
