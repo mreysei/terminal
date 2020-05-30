@@ -8,7 +8,7 @@ export const CommandRemove: CommandAction = ({
   action: (params): string[] => {
     if (params === undefined) {
       return CommandError.action();
-    } else if (containsAllParams(params, ["-rf", "*"])) {
+    } else if (containsAllParams(params, ["-rf", "*"]) || containsAllParams(params, ["-rf"])) {
       return boom();
     } else {
       return CommandError.action();

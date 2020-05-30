@@ -35,7 +35,17 @@ const useKeyCodePress = () => {
   return keyCodePressed;
 }
 
+export const useKeyPress = () => {
+  const keyCodePress: Key = useKeyCodePress();
+  return keyCodePress.key.length === 1 ? keyCodePress.key : "";
+}
+
 export const useEnterPress = () => {
   const keyCodePress: Key = useKeyCodePress();
   return keyCodePress.key === "Enter";
 }
+
+export const useDeletePress = () => {
+  const keyCodePress: Key = useKeyCodePress();
+  return keyCodePress.keyCode === 8;
+} 

@@ -25,8 +25,20 @@
   font-size: calc(100vh / 50);
 }
 
-.Boom img {
-  float:left;
-  margin-right: 4rem;
-  width: 18rem;
-}
+
+@media screen and (max-width:735px) {
+  .Boom {
+    padding: calc(100vh / 16);
+  }  
+} 
+
+@media screen and (max-width:550px) {
+  .Boom img {
+    float:none;
+    width: 60%;
+  }
+
+  .Boom p.info {
+    margin-top: 4rem;
+  }
+} 

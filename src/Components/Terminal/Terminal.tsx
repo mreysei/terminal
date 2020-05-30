@@ -28,22 +28,14 @@ export const Terminal = () => {
     setUsername(getUsername());
   }
 
-  const focus = () => {
-    const input = document.getElementById('input-disable')
-    const isFocused = document.activeElement === ReactDOM.findDOMNode(input);
-    if (input !== null && !isFocused) {
-      input.focus();
-    } else {
-
-    }
-  }
-
   useEffect(() => {
-    window.addEventListener('touchstart', focus);
-    window.addEventListener('touchend', focus);
-  }, []);
+    window.addEventListener('touchend', (e) => {
+      e.preventDefault()
 
-  focus();
+      const input = document.getElementById('input-disable')
+      if (input !== null) input.focus()
+    });
+  }, []);
 
   return (
     <div className="Terminal">
