@@ -1,4 +1,4 @@
-import { CommandClear, CommandError, CommandRemove, CommandHelp, CommandSet, CommandGet, CommandExit } from ".";
+import { CommandClear, CommandError, CommandRemove, CommandHelp, CommandSet, CommandGet, CommandExit, CommandBinary } from ".";
 
 export interface CommandAction {
   name: string,
@@ -29,6 +29,14 @@ export const containsAllParams = (params: string[], compareParams: string[]): bo
   return haveAllParams;
 }
 
+export const containsAnyParams = (params: string[], compareParams: string[]): boolean => {
+  let haveAnyParams = false;
+  compareParams.forEach(element => {
+    if (params.includes(element)) haveAnyParams = true;
+  });
+  return haveAnyParams;
+}
+
 export const containsAKey = (params: string[], key: string) => {
   let haveAKey = false;
   params.forEach((param: string) => {
@@ -56,6 +64,7 @@ export const getAllCommands = (): Dictionary<CommandAction> => ({
   set: CommandSet,
   get: CommandGet,
   rm: CommandRemove,
+  binary: CommandBinary,
   exit: CommandExit,
 })
 
