@@ -9,6 +9,7 @@ import {
   CommandBinary,
   CommandWoah,
   CommandPwd,
+  CommandOpen,
 } from ".";
 
 export interface CommandAction {
@@ -78,6 +79,7 @@ export const getAllCommands = (): Dictionary<CommandAction> => ({
   binary: CommandBinary,
   woah: CommandWoah,
   pwd: CommandPwd,
+  open: CommandOpen,
   exit: CommandExit,
 })
 
