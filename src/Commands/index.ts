@@ -5,3 +5,4 @@ export * from './actions/CommandRemove';
 export * from './actions/CommandHelp';
 export * from './actions/CommandSet';
 export * from './actions/CommandGet';
+export * from './actions/CommandExit';
