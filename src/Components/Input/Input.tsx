@@ -9,12 +9,12 @@ interface InputProps {
 }
 
 export const Input: FC<InputProps> = ({ onEnter, username }) => {
-  const [input, setInput] = useState("");
-  const keyPressed = useKeyPress();
-  const deletePressed = useDeletePress();
-  const enterPressed = useEnterPress();
+  const [input, setInput] = useState("")
+  const keyPressed = useKeyPress()
+  const deletePressed = useDeletePress()
+  const enterPressed = useEnterPress()
 
-  let inputForScroll: HTMLDivElement | null;
+  let inputForScroll: HTMLDivElement | null
 
   useEffect(() => {
     if (keyPressed !== "") {
@@ -34,7 +34,6 @@ export const Input: FC<InputProps> = ({ onEnter, username }) => {
       onEnter({
         username,
         directory: "~",
-        type: CommandType.default,
         command: input,
         output: [],
       });
@@ -44,10 +43,30 @@ export const Input: FC<InputProps> = ({ onEnter, username }) => {
     }
   }, [enterPressed, keyPressed, deletePressed]);
 
+  const isMobile = (): boolean => {
+    const toMatch = [
+      /Android/i,
+      /webOS/i,
+      /iPhone/i,
+      /iPad/i,
+      /iPod/i,
+      /BlackBerry/i,
+      /Windows Phone/i
+    ];
+
+    return toMatch.some((toMatchItem) => {
+      return navigator.userAgent.match(toMatchItem);
+    });
+  }
+
+  const onChange = (event: any) => {
+    if (isMobile()) setInput(event.target.value.toLowerCase());
+  }
+
   return (
     <div className="Input" ref={(element) => inputForScroll = element}>
       <Command username={username} command={input} />
-      <input id="input-disable" value={input} onChange={(e) => setInput(e.target.value.toLowerCase())} onClick={(e) => { e.preventDefault() }} autoFocus />
+      <input id="input-disable" value={input} onChange={onChange} autoFocus />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { CommandClear, CommandError, CommandRemove, CommandHelp, CommandSet, CommandGet, CommandExit, CommandBinary } from ".";
+import { CommandClear, CommandError, CommandRemove, CommandHelp, CommandSet, CommandGet, CommandExit, CommandBinary, CommandWoah } from ".";
 
 export interface CommandAction {
   name: string,
@@ -65,6 +65,7 @@ export const getAllCommands = (): Dictionary<CommandAction> => ({
   get: CommandGet,
   rm: CommandRemove,
   binary: CommandBinary,
+  woah: CommandWoah,
   exit: CommandExit,
 })
 

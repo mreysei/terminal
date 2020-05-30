@@ -21,7 +21,7 @@ const getValues = (params: string[]): string[] => {
     return keyValues.reduce((accumulator, param) => {
       if (containsAKey(["username"], param.key)) {
         localStorage.setItem(param.key, param.value);
-        accumulator.push(`Se ha actualizado la variable "${param.key}" con el valor "${param.value}"`);
+        accumulator.push(`Hola ${param.value}!! Se actualizó tu ${param.key}`);
       } else {
         accumulator.push(`No se reconoció la variable "${param.key}" :v`)
       }

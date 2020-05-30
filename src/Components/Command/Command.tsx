@@ -9,19 +9,25 @@ export enum CommandType {
 export interface Command {
   username: string,
   directory?: string,
-  type?: CommandType,
   command: string,
   output?: string[],
 }
 
+const typeForUser = (username: string): CommandType => {
+  if (username === "admin" || username === "superuser" || username === "su") {
+    return CommandType.superuser;
+  }
+  return CommandType.default;
+}
+
 type CommandProps = Command;
 
-export const Command: FC<CommandProps> = ({ username, directory, type, command, output = [] }) => (
+export const Command: FC<CommandProps> = ({ username, directory, command, output = [] }) => (
   <div className="Command">
     <span className="username">{username || "anonymous"}@mreysei</span>
     <span className="root">:</span>
     <span className="directory">{directory || "~"}</span>
-    <span className="type">{type || CommandType.default}</span>
+    <span className="type">{typeForUser(username)}</span>
     <span className="command-line">{command}</span>
     {output != null && output.map(stringToHtml)}
   </div>

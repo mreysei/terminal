@@ -12,7 +12,6 @@ export const Historic: FC<HistoricProps> = ({ commands = [] }) => (
         key={i}
         username={command.username}
         directory={command.directory}
-        type={command.type}
         command={command.command}
         output={command.output} />
     ))}
