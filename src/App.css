@@ -3,8 +3,21 @@
 html, body, .App {
   margin: 0;
   padding: 0;
+}
+
+body.ubuntu {
   background-color: #2d0922;
   color: #ffffff;
+}
+
+body.dark {
+  background-color: #222222;
+  color: #ffffff;
+}
+
+body.light {
+  background-color: #ffffff;
+  color: #555555;
 }
 
 * {

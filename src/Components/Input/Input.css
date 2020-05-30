@@ -21,3 +21,13 @@
   from { background-color: white; }
   to { background-color: none; }
 }
+
+/* Light theme */
+.light .Input > div::after {
+  animation-name: inputTextLightTheme;
+}
+
+@keyframes inputTextLightTheme {
+  from { background-color: #222222; }
+  to { background-color: none; }
+}

@@ -49,7 +49,29 @@
   margin: 20px 0;
 }
 
-
 .Command .social img {
   width: 12px;
+}
+
+/* Light theme */
+.light .Command .username {
+  color: #201abe;
+}
+
+.light .Command a {
+  color: #201abe;
+}
+
+.light .Command a:hover {
+  color: #908cf3;
+}
+
+.light .Command hr {
+  color: #201abe;
+  background-color: rgba(0,0,0,0.25);
+}
+
+/* Dark theme */
+.dark .Command .username {
+  color: #589bbb;
 }

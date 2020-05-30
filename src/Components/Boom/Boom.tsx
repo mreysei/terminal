@@ -25,7 +25,7 @@ export const Boom = () => {
         Para saber a más información escanea este código QR<br />
         <br />
         <br />
-        Código de error: LMCobol1234
+        Código de error: WOAH!!
       </p>
     </div>
   )
