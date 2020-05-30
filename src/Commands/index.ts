@@ -8,3 +8,4 @@ export * from './actions/CommandGet';
 export * from './actions/CommandExit';
 export * from './actions/CommandBinary';
 export * from './actions/CommandWoah';
+export * from './actions/CommandPwd';
