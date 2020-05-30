@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga';
 import {
   CommandClear,
   CommandError,
@@ -86,5 +87,15 @@ export const getAllCommands = (): Dictionary<CommandAction> => ({
 export const getCommandByName = (name: string): CommandAction => {
   const commands = getAllCommands();
   const command = commands[name]
-  return command !== undefined ? command : commands.error
+
+  if (command !== undefined) {
+    return command;
+  } else {
+    ReactGA.event({
+      category: 'Commands',
+      action: 'Desconocido',
+      label: name,
+    })
+    return commands.error;
+  }
 }

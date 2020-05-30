@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga';
 import { CommandAction, getKeyValueFrom, KeyValue, containsAKey, CommandHelp } from "..";
 
 export const CommandSet: CommandAction = ({
@@ -21,11 +22,14 @@ const getValues = (params: string[]): string[] => {
     const keyValues: KeyValue[] = getKeyValueFrom(params);
     return keyValues.reduce((accumulator, param) => {
       if (containsAKey(["username"], param.key)) {
+        analytics("username = " + param.value);
         localStorage.setItem(param.key, param.value);
         accumulator.push(`Hola ${param.value}!! Se actualizó tu ${param.key}`);
       } else if (containsAKey(["theme"], param.key)) {
+        analytics("theme = " + param.value);
         setTheme(accumulator, param);
       } else {
+        analytics("key desconocida = " + param.key);
         accumulator.push(`No se reconoció la variable "${param.key}" :v`)
       }
       return accumulator;
@@ -33,6 +37,14 @@ const getValues = (params: string[]): string[] => {
   } catch (_) {
     return errorParams([CommandSet.name]);
   }
+}
+
+const analytics = (value: string) => {
+  ReactGA.event({
+    category: 'Commands',
+    action: 'Conocido',
+    label: CommandSet.name + " " + value,
+  })
 }
 
 const setTheme = (accumulator: string[], param: KeyValue) => {

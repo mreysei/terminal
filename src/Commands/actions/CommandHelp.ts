@@ -1,9 +1,16 @@
+import ReactGA from 'react-ga';
 import { getAllCommands, CommandAction, CommandParam } from "..";
 
 export const CommandHelp: CommandAction = ({
   name: "help",
   description: "Lista los comandos que se pueden realizar",
   action: (params: string[] | undefined): string[] => {
+    ReactGA.event({
+      category: 'Commands',
+      action: 'Conocido',
+      label: CommandHelp.name,
+    })
+
     const commands = getAllCommands()
     let initialMessage = "Estos son los comandos visibles, además de estos hay otros escondidos... jeje"
     let keys = Object.keys(commands)
