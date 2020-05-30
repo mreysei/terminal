@@ -6,6 +6,10 @@ export const Boom = () => {
   const [random, setRandom] = useState(0);
 
   useEffect(() => {
+    const url = "https://www.myinstants.com/media/sounds/y2mate-mp3cut_sRzY6rh.mp3"
+    const audio = new Audio(url)
+    audio.loop = true;
+    audio.play()
     setInterval(() => {
       setRandom(Math.floor(Math.random() * 100));
     }, 1000)
