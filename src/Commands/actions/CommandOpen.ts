@@ -4,6 +4,7 @@ export const CommandOpen: CommandAction = ({
   name: "open",
   description: "Abre una web en una nueva pestaña",
   params: [
+    { name: "work", description: "Abre la web de mi empresa!" },
     { name: "linkedin", description: "Abre mi perfil de LinkedIn" },
     { name: "github", description: "Abre mi perfil de GitHub" },
     { name: "twitter", description: "Abre mi perfil de Twitter" },
@@ -12,6 +13,9 @@ export const CommandOpen: CommandAction = ({
   action: (params): string[] => {
     if (params === undefined || params.length === 0) {
       return errorParams([CommandOpen.name]);
+    } else if (containsAllParams(params, ["work"])) {
+      open("https://leanmind.es/")
+      return ["Abriendo la web de LeanMind!"];
     } else if (containsAllParams(params, ["linkedin"])) {
       open("https://www.linkedin.com/in/mreysei/")
       return ["Abriendo mi LinkedIn!"];
