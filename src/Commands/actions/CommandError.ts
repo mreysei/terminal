@@ -11,7 +11,7 @@ export const CommandError: CommandAction = ({
     })
 
     return [
-      "Oops! Ha ocurrido un error, resulta que ese comando no existe :(",
+      "Oops! Ha ocurrido un error, resulta que ese comando no existe :( <br />" +
       "Prueba a escribir 'help', quizás te sea de ayuda",
     ]
   },

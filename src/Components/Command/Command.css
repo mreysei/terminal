@@ -23,6 +23,32 @@
 
 .Command .output {
   white-space: pre-wrap;
+  margin: 0 -4px;
+  padding: 4px;
+}
+
+.Command .output:nth-of-type(even) {
+  background-color: rgba(255,255,255,0.05);
+}
+
+.Command .output .help {
+  display:grid;
+  grid-template-columns: 240px 1fr;
+}
+
+.Command .output .help .command-name, 
+.Command .output .help .param-name, 
+.Command .output .help .command-description,
+.Command .output .help .param-description { 
+  display:block;
+}
+
+.Command .output .help .command-name {
+  margin-left: 20px;
+}
+
+.Command .output .help .param-name {
+  margin-left: 30px;
 }
 
 .Command h3.inline {
@@ -53,6 +79,12 @@
   width: 12px;
 }
 
+@media screen and (max-width: 500px) {
+  .Command .output .help {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 /* Light theme */
 .light .Command .username {
   color: #201abe;
@@ -69,6 +101,10 @@
 .light .Command hr {
   color: #201abe;
   background-color: rgba(0,0,0,0.25);
+}
+
+.light .Command .output:nth-of-type(even) {
+  background-color: rgba(0,0,0,0.05);
 }
 
 /* Dark theme */

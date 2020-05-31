@@ -1,5 +1,6 @@
 import ReactGA from 'react-ga';
 import { getAllCommands, CommandAction, CommandParam } from "..";
+import { isMobile } from '../../Events';
 
 export const CommandHelp: CommandAction = ({
   name: "help",
@@ -20,19 +21,26 @@ export const CommandHelp: CommandAction = ({
       keys = params;
     }
 
-    return keys.reduce((accumulator, key) => {
+    const messages = keys.reduce((accumulator, key) => {
       const command = commands[key];
       if (command !== undefined && command.description !== undefined) {
         addCommand(accumulator, command);
       }
       return accumulator;
-    }, [initialMessage] as string[]);
+    }, [] as string[]);
+
+    return [
+      initialMessage,
+      ...messages.map((message) => "<div class='help'>" + message + "</div>"),
+    ]
   },
 })
 
 const addCommand = (accumulator: string[], command: CommandAction) => {
-  const spaces = getSpaces(command.name, 26);
-  accumulator.push(`  ${command.name} ${spaces} - ${command.description}`)
+  accumulator.push(
+    `<span class="command-name">${command.name}</span>` +
+    `<span class="command-description">${command.description}</span>`
+  )
   if (command.params !== undefined) {
     command.params.forEach((param) => addParam(accumulator, param));
   }
@@ -40,8 +48,10 @@ const addCommand = (accumulator: string[], command: CommandAction) => {
 
 const addParam = (accumulator: string[], param: CommandParam) => {
   if (param.description !== undefined) {
-    const spaces = getSpaces(param.name, 22);
-    accumulator.push(`      ${param.name} ${spaces} - ${param.description}`)
+    accumulator.push(
+      `<span class="param-name">${param.name}</span>` +
+      `<span class="param-description">${param.description}</span>`
+    )
   }
 }
 

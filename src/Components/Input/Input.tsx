@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FC } from 'react';
-import { useEnterPress, useKeyPress, useDeletePress } from '../../Events';
+import { useEnterPress, useKeyPress, useDeletePress, isMobile } from '../../Events';
 import { Command, CommandType } from '../Command/Command';
 import './Input.css';
 
@@ -43,21 +43,6 @@ export const Input: FC<InputProps> = ({ onEnter, username }) => {
     }
   }, [enterPressed, keyPressed, deletePressed]);
 
-  const isMobile = (): boolean => {
-    const toMatch = [
-      /Android/i,
-      /webOS/i,
-      /iPhone/i,
-      /iPad/i,
-      /iPod/i,
-      /BlackBerry/i,
-      /Windows Phone/i
-    ];
-
-    return toMatch.some((toMatchItem) => {
-      return navigator.userAgent.match(toMatchItem);
-    });
-  }
 
   const onChange = (event: any) => {
     if (isMobile()) setInput(event.target.value.toLowerCase());
