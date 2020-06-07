@@ -1,14 +1,10 @@
-import ReactGA from 'react-ga';
 import { CommandAction } from '../CommandAction';
+import { Analytics } from '../../Services/analytics';
 
 export const pwd: CommandAction = ({
   name: "pwd",
   action: (): string[] => {
-    ReactGA.event({
-      category: 'Commands',
-      action: 'Conocido',
-      label: pwd.name,
-    })
+    Analytics.command("pwd");
 
     return [window.location.href]
   },

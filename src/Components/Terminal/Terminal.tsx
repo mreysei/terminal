@@ -3,6 +3,8 @@ import { Logo, Input, Historic, Command } from '..';
 import './Terminal.css';
 import { CommandAction } from '../../Commands/CommandAction';
 import { getCommandByName } from '../../Commands/Events';
+import { Analytics } from '../../Services/analytics';
+import { error } from '../../Commands/actions';
 
 export const Terminal = () => {
   const getUsername = () => localStorage.getItem("username") || "anonymous";
@@ -10,19 +12,24 @@ export const Terminal = () => {
   const [logoEnable, setLogoEnable] = useState(true);
   const [username, setUsername] = useState(getUsername());
 
-  const onSendCommand = (command: Command) => {
-    const input = command.command.split(" ");
+  const onSendCommand = (commandInput: Command) => {
+    const input = commandInput.command.split(" ");
     const commandName = input.shift() || "error";
     const commandParams = input || [];
-    const commandAction: CommandAction = getCommandByName(commandName);
+    let command: CommandAction | null = getCommandByName(commandName);
 
-    if (commandAction.name === 'clear') {
+    if (command?.name === 'clear') {
       setLogoEnable(false);
       setHistoric([]);
     } else {
-      const output: string[] = commandAction.action(commandParams);
-      command.output = output;
-      setHistoric([...historic, command]);
+      if (command === null) {
+        Analytics.error(commandInput.command);
+        command = error;
+      }
+
+      const output: string[] = command.action(commandParams);
+      commandInput.output = output;
+      setHistoric([...historic, commandInput]);
     }
 
     setUsername(getUsername());

@@ -1,13 +1,13 @@
 import React from 'react';
-import ReactGA from 'react-ga';
 import { Terminal } from './Components';
 import './App.css';
+import { Analytics } from './Services/analytics';
 
 export const App = () => {
   const currentTheme = localStorage.getItem("theme") || "ubuntu"
   document.getElementsByTagName('body')[0].classList.add(currentTheme)
 
-  ReactGA.initialize('UA-105839851-1');
+  Analytics.initialize();
 
   return (
     <div className="App" id="App">

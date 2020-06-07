@@ -1,7 +1,7 @@
-import ReactGA from 'react-ga';
 import { KeyValue } from './KeyValue';
 import { CommandAction } from './CommandAction';
 import { getAllCommands } from './Commands';
+import { Analytics } from '../Services/analytics';
 
 export const containsAllParams = (params: string[], compareParams: string[]): boolean => {
   let haveAllParams = true;
@@ -39,18 +39,12 @@ export const getKeyValueFrom = (params: string[]): KeyValue[] => params.reduce((
   return accumulator;
 }, [] as KeyValue[]);
 
-export const getCommandByName = (name: string): CommandAction => {
+export const getCommandByName = (name: string): CommandAction | null => {
   const commands = getAllCommands();
   const command = commands[name]
 
   if (command !== undefined) {
     return command;
-  } else {
-    ReactGA.event({
-      category: 'Commands',
-      action: 'Desconocido',
-      label: name,
-    })
-    return commands.error;
   }
+  return null
 }

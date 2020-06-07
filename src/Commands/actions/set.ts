@@ -1,8 +1,8 @@
-import ReactGA from 'react-ga';
 import { CommandAction } from '../CommandAction';
 import { help } from '.';
 import { KeyValue } from '../KeyValue';
-import { getKeyValueFrom, containsAKey } from '../Events';
+import { getKeyValueFrom } from '../Events';
+import { Analytics } from '../../Services/analytics';
 
 export const set: CommandAction = ({
   name: "set",
@@ -12,9 +12,10 @@ export const set: CommandAction = ({
   ],
   action: (params): string[] => {
     if (params === undefined || params.length === 0) {
-      return help.action([set.name]);
+      Analytics.command("set")
+      return help.action([set.name])
     } else {
-      return getValues(params);
+      return getValues(params)
     }
   },
 })
@@ -22,31 +23,34 @@ export const set: CommandAction = ({
 const getValues = (params: string[]): string[] => {
   try {
     const keyValues: KeyValue[] = getKeyValueFrom(params);
+    if (keyValues.length === 0) {
+      Analytics.error(`set ${params.join(" ")}`)
+      return help.action([set.name])
+    }
     return keyValues.reduce((accumulator, param) => {
-      if (containsAKey(["username"], param.key)) {
-        analytics("username = " + param.value);
-        localStorage.setItem(param.key, param.value);
-        accumulator.push(`Hola ${param.value}!! Se actualizó tu ${param.key}`);
-      } else if (containsAKey(["theme"], param.key)) {
-        analytics("theme = " + param.value);
-        setTheme(accumulator, param);
+      if (param.key === "username") {
+        Analytics.command("set username")
+        Analytics.value(`Nombre de usuario: ${param.value}`)
+        setUsername(param.value)
+        accumulator.push(`Hola ${param.value}!! Se actualizó tu ${param.key}`)
+      } else if (param.key === "theme") {
+        Analytics.command("set theme")
+        Analytics.value(`Tema: ${param.value}`);
+        setTheme(accumulator, param)
       } else {
-        analytics("key desconocida = " + param.key);
+        Analytics.error(`set --${param.key}=${param.value}`)
         accumulator.push(`No se reconoció la variable "${param.key}" :v`)
       }
-      return accumulator;
+      return accumulator
     }, [] as string[])
   } catch (_) {
-    return help.action([set.name]);
+    Analytics.error(`set ${params.join(" ")}`)
+    return help.action([set.name])
   }
 }
 
-const analytics = (value: string) => {
-  ReactGA.event({
-    category: 'Commands',
-    action: 'Conocido',
-    label: set.name + " " + value,
-  })
+const setUsername = (value: string) => {
+  localStorage.setItem("username", value)
 }
 
 const setTheme = (accumulator: string[], param: KeyValue) => {

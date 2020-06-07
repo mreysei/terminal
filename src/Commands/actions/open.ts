@@ -1,7 +1,7 @@
-import ReactGA from 'react-ga';
 import { CommandAction } from '../CommandAction';
 import { containsAllParams } from '../Events';
 import { help } from './help';
+import { Analytics } from '../../Services/analytics';
 
 export const open: CommandAction = ({
   name: "open",
@@ -14,28 +14,30 @@ export const open: CommandAction = ({
   ],
   action: (params): string[] => {
     if (params === undefined || params.length === 0) {
+      Analytics.command("open")
       return help.action([open.name]);
     } else if (containsAllParams(params, ["work"])) {
-      analytics("work")
+      Analytics.command("open work")
       openTab("https://leanmind.es/")
       return ["Abriendo la web de LeanMind!"];
     } else if (containsAllParams(params, ["linkedin"])) {
-      analytics("linkedin")
+      Analytics.command("open linkedin")
       openTab("https://www.linkedin.com/in/mreysei/")
       return ["Abriendo mi LinkedIn!"];
     } else if (containsAllParams(params, ["github"])) {
-      analytics("github")
+      Analytics.command("open github")
       openTab("https://github.com/mreysei")
       return ["Abriendo mi GitHub!"];
     } else if (containsAllParams(params, ["instagram"])) {
-      analytics("instagram")
+      Analytics.command("open instagram")
       openTab("https://www.instagram.com/mreysei/")
       return ["Abriendo mi Instagram!"];
     } else if (containsAllParams(params, ["twitter"])) {
-      analytics("twitter")
+      Analytics.command("open twitter")
       openTab("https://twitter.com/mreysei")
       return ["Abriendo mi Twitter!"];
     } else {
+      Analytics.error(`open ${params.join(" ")}`)
       return help.action([open.name]);
     }
   },
@@ -43,12 +45,4 @@ export const open: CommandAction = ({
 
 const openTab = (link: string) => {
   window.open(link, '_blank');
-}
-
-const analytics = (value: string) => {
-  ReactGA.event({
-    category: 'Commands',
-    action: 'Conocido',
-    label: open.name + " " + value,
-  })
 }

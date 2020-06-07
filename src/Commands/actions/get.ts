@@ -1,8 +1,8 @@
-import ReactGA from 'react-ga';
 import { getExperience, getPosts } from "../info";
 import { CommandAction } from '../CommandAction';
 import { containsAllParams } from '../Events';
 import { help } from './help';
+import { Analytics } from '../../Services/analytics';
 
 export const get: CommandAction = ({
   name: "get",
@@ -12,23 +12,17 @@ export const get: CommandAction = ({
   ],
   action: (params): string[] => {
     if (params === undefined || params.length === 0) {
+      Analytics.command("get")
       return help.action([get.name]);
     } else if (containsAllParams(params, ["experience"])) {
-      analytics("experience")
+      Analytics.command("get experience")
       return getExperience()
     } else if (containsAllParams(params, ["posts"])) {
-      analytics("posts")
+      Analytics.command("get posts")
       return getPosts()
     } else {
+      Analytics.error(`get ${params.join(" ")}`)
       return help.action([get.name]);
     }
   },
 })
-
-const analytics = (value: string) => {
-  ReactGA.event({
-    category: 'Commands',
-    action: 'Conocido',
-    label: get.name + " " + value,
-  })
-}

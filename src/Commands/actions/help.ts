@@ -1,33 +1,40 @@
-import ReactGA from 'react-ga';
 import { getAllCommands } from '../Commands';
 import { CommandAction } from '../CommandAction';
+import { Analytics } from '../../Services/analytics';
+import { error } from '.';
 
 export const help: CommandAction = ({
   name: "help",
   description: "Lista los comandos que se pueden realizar",
   action: (params: string[] | undefined): string[] => {
-    ReactGA.event({
-      category: 'Commands',
-      action: 'Conocido',
-      label: help.name,
-    })
-
     const commands = getAllCommands()
     let initialMessage = "Estos son los comandos visibles, además de estos hay otros escondidos... jeje"
     let keys = Object.keys(commands)
 
     if (params !== undefined && params.length > 0) {
-      initialMessage = "Oops parece que algo ha ido mal, este comando funciona así: "
+      initialMessage = "Este comando funciona así: "
       keys = params
     }
 
-    return keys.reduce((accumulator, key) => {
+    const messages = keys.reduce((accumulator, key) => {
       const command = commands[key];
       if (command !== undefined) {
         addCommand(accumulator, command);
       }
       return accumulator;
     }, [initialMessage] as string[])
+
+    if (messages.length > 1) {
+      if (keys.length === 1) {
+        Analytics.command(`help ${keys.join(" ")}`)
+      } else {
+        Analytics.command("help");
+      }
+      return messages;
+    } else {
+      Analytics.error(`help ${keys.join(" ")}`)
+      return error.action();
+    }
   },
 })
 
