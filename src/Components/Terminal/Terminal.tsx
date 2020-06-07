@@ -4,6 +4,7 @@ import './Terminal.css';
 import { CommandAction } from '../../Commands/CommandAction';
 import { getCommandByName } from '../../Commands/Events';
 import { Analytics } from '../../Services/analytics';
+import { Historic as HistoricService } from '../../Services/historic';
 import { error } from '../../Commands/actions';
 
 export const Terminal = () => {
@@ -13,6 +14,7 @@ export const Terminal = () => {
   const [username, setUsername] = useState(getUsername());
 
   const onSendCommand = (commandInput: Command) => {
+    HistoricService.add(commandInput.command);
     const input = commandInput.command.split(" ");
     const commandName = input.shift() || "error";
     const commandParams = input || [];

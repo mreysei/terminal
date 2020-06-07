@@ -48,4 +48,14 @@ export const useEnterPress = () => {
 export const useDeletePress = () => {
   const keyCodePress: Key = useKeyCodePress();
   return keyCodePress.keyCode === 8;
-} 
+}
+
+export const useArrowUpPress = () => {
+  const keyCodePress: Key = useKeyCodePress();
+  return keyCodePress.key === "ArrowUp";
+}
+
+export const useArrowDownPress = () => {
+  const keyCodePress: Key = useKeyCodePress();
+  return keyCodePress.key === "ArrowDown";
+}
