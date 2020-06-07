@@ -1,7 +1,6 @@
 import { KeyValue } from './KeyValue';
 import { CommandAction } from './CommandAction';
 import { getAllCommands } from './Commands';
-import { Analytics } from '../Services/analytics';
 
 export const containsAllParams = (params: string[], compareParams: string[]): boolean => {
   let haveAllParams = true;

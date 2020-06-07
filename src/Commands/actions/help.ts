@@ -8,7 +8,7 @@ export const help: CommandAction = ({
   description: "Lista los comandos que se pueden realizar",
   action: (params: string[] | undefined): string[] => {
     const commands = getAllCommands()
-    let initialMessage = "Estos son los comandos visibles, además de estos hay otros escondidos... jeje"
+    let initialMessage = "Estos son los comandos disponibles:"
     let keys = Object.keys(commands)
 
     if (params !== undefined && params.length > 0) {
@@ -29,6 +29,7 @@ export const help: CommandAction = ({
         Analytics.command(`help ${keys.join(" ")}`)
       } else {
         Analytics.command("help");
+        messages.push("Pero además de estos comandos... hay otros escondidos que no mencionaré...")
       }
       return messages;
     } else {

@@ -10,6 +10,6 @@ export const Logo = () => (
     .  |_| |_| |_|_|  \___|\__, |___/\___|_|  .<br />
     .                      |___/              .<br />
     <br />
-    ¡Bienvenido a mi terminal!
+    ¡Bienvenido a mi terminal! Para empezar prueba el comando 'help'
   </div>
 );
