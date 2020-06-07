@@ -1,7 +1,7 @@
 import { CommandAction } from '../CommandAction';
 import { Analytics } from '../../Services/analytics';
 
-export const triste: CommandAction = ({
+export const sad: CommandAction = ({
   name: ":(",
   action: (): string[] => {
     Analytics.command(":(");
