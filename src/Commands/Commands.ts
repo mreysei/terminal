@@ -1,42 +1,18 @@
 import { CommandAction } from "./CommandAction";
-import {
-  error,
-  clear,
-  help,
-  set,
-  get,
-  rm,
-  woah,
-  pwd,
-  open,
-  whoami,
-  hola,
-  holi,
-  hi,
-  hello,
-  sad,
-  sudo
-} from "./actions";
+const Command = require('./actions')
 
 interface Dictionary<Type> {
   [key: string]: Type;
 }
 
-export const getAllCommands = (): Dictionary<CommandAction> => ({
-  error,
-  clear,
-  help,
-  set,
-  get,
-  rm,
-  woah,
-  pwd,
-  open,
-  whoami,
-  holi,
-  hola,
-  hi,
-  hello,
-  ":(": sad,
-  sudo,
-})
+export const getAllCommands = (): Dictionary<CommandAction> => {
+  const keys = Object.keys(Command)
+  const commands: Dictionary<CommandAction> = {}
+
+  keys.forEach((key: string) => {
+    const command: CommandAction = Command[key]
+    commands[command.name] = command;
+  })
+
+  return commands;
+}
