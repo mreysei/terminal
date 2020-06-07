@@ -2,9 +2,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  width: 100vw;
-  height: 100vh;
   background-color: blue;
+  min-height: 100vh;
   color: white;
   padding: calc(100vh / 8);
   font-family:'Ubuntu Mono';
@@ -25,14 +24,16 @@
   font-size: calc(100vh / 50);
 }
 
+.Boom img {
+  float:left;
+  margin-right: 20px;
+}
 
-@media screen and (max-width:735px) {
+@media screen and (max-width:800px) {
   .Boom {
     padding: calc(100vh / 16);
-  }  
-} 
-
-@media screen and (max-width:550px) {
+  }
+  
   .Boom img {
     float:none;
     width: 60%;
