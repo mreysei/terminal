@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Logo, Input, Historic, Command } from '..';
-import { CommandAction, getCommandByName } from '../../Commands';
 import './Terminal.css';
-import ReactDOM from 'react-dom';
+import { CommandAction } from '../../Commands/CommandAction';
+import { getCommandByName } from '../../Commands/Events';
 
 export const Terminal = () => {
   const getUsername = () => localStorage.getItem("username") || "anonymous";

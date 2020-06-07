@@ -1,14 +1,14 @@
 import ReactGA from 'react-ga';
-import { CommandAction } from "..";
+import { CommandAction } from '../CommandAction';
 
-export const CommandClear: CommandAction = {
+export const clear: CommandAction = {
   name: "clear",
   description: "Limpia la terminal",
   action: () => {
     ReactGA.event({
       category: 'Commands',
       action: 'Conocido',
-      label: CommandClear.name,
+      label: clear.name,
     })
 
     return [];

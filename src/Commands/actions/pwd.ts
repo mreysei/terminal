@@ -1,13 +1,13 @@
 import ReactGA from 'react-ga';
-import { CommandAction } from "..";
+import { CommandAction } from '../CommandAction';
 
-export const CommandPwd: CommandAction = ({
+export const pwd: CommandAction = ({
   name: "pwd",
   action: (): string[] => {
     ReactGA.event({
       category: 'Commands',
       action: 'Conocido',
-      label: CommandPwd.name,
+      label: pwd.name,
     })
 
     return [window.location.href]

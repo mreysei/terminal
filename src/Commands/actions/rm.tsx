@@ -1,23 +1,25 @@
 import React from 'react';
 import ReactGA from 'react-ga';
 import ReactDOM from 'react-dom';
-import { CommandAction, containsAllParams, CommandError } from "..";
 import { Boom } from '../../Components/Boom/Boom';
+import { CommandAction } from '../CommandAction';
+import { error } from './error';
+import { containsAllParams } from '../Events';
 
-export const CommandRemove: CommandAction = ({
+export const rm: CommandAction = ({
   name: "rm",
   action: (params): string[] => {
     if (params === undefined) {
-      return CommandError.action();
+      return error.action();
     } else if (containsAllParams(params, ["-rf", "*"]) || containsAllParams(params, ["-rf"])) {
       ReactGA.event({
         category: 'Commands',
         action: 'Conocido',
-        label: CommandRemove.name,
+        label: rm.name,
       })
       return boom();
     } else {
-      return CommandError.action();
+      return error.action();
     }
   },
 })

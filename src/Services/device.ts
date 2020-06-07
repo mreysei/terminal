@@ -13,3 +13,16 @@ export const isMobile = (): boolean => {
     return navigator.userAgent.match(toMatchItem);
   });
 }
+
+export const isComputer = (): boolean => {
+  const toMatch = [
+    /Chrome/i,
+    /Firefox/i,
+    /MSIE 8.0/i,
+    /MSIE 9.0/i,
+  ];
+
+  return toMatch.some((toMatchItem) => {
+    return navigator.userAgent.match(toMatchItem);
+  });
+}

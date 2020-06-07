@@ -1,38 +1,7 @@
 import ReactGA from 'react-ga';
-import {
-  CommandClear,
-  CommandError,
-  CommandRemove,
-  CommandHelp,
-  CommandSet,
-  CommandGet,
-  CommandExit,
-  CommandBinary,
-  CommandWoah,
-  CommandPwd,
-  CommandOpen,
-} from ".";
-
-export interface CommandAction {
-  name: string,
-  description?: string,
-  params?: CommandParam[],
-  action: (params?: string[]) => string[],
-}
-
-export interface CommandParam {
-  name: string,
-  description?: string,
-}
-
-interface Dictionary<Type> {
-  [key: string]: Type;
-}
-
-export interface KeyValue {
-  key: string,
-  value: string,
-}
+import { KeyValue } from './KeyValue';
+import { CommandAction } from './CommandAction';
+import { getAllCommands } from './Commands';
 
 export const containsAllParams = (params: string[], compareParams: string[]): boolean => {
   let haveAllParams = true;
@@ -69,20 +38,6 @@ export const getKeyValueFrom = (params: string[]): KeyValue[] => params.reduce((
   }
   return accumulator;
 }, [] as KeyValue[]);
-
-export const getAllCommands = (): Dictionary<CommandAction> => ({
-  error: CommandError,
-  clear: CommandClear,
-  help: CommandHelp,
-  set: CommandSet,
-  get: CommandGet,
-  rm: CommandRemove,
-  binary: CommandBinary,
-  woah: CommandWoah,
-  pwd: CommandPwd,
-  open: CommandOpen,
-  exit: CommandExit,
-})
 
 export const getCommandByName = (name: string): CommandAction => {
   const commands = getAllCommands();

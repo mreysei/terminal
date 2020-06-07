@@ -1,13 +1,13 @@
 import ReactGA from 'react-ga';
-import { CommandAction } from "..";
+import { CommandAction } from '../CommandAction';
 
-export const CommandError: CommandAction = ({
+export const error: CommandAction = ({
   name: "error",
   action: () => {
     ReactGA.event({
       category: 'Commands',
       action: 'Conocido',
-      label: CommandError.name,
+      label: error.name,
     })
 
     return [

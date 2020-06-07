@@ -31,25 +31,43 @@
   background-color: rgba(255,255,255,0.05);
 }
 
-.Command .output .help {
+.Command .output .command {
   display:grid;
   grid-template-columns: 240px 1fr;
+  grid-template-areas: "name description" 
+                       "params    params";
 }
 
-.Command .output .help .command-name, 
-.Command .output .help .param-name, 
-.Command .output .help .command-description,
-.Command .output .help .param-description { 
-  display:block;
+.Command .output .command .params {
+  display:flex;
+  flex-wrap: wrap;
 }
 
-.Command .output .help .command-name {
-  margin-left: 20px;
+.Command .output .command .name {
+  grid-area: name;
+  width: 240px;
+  height: 18px;
+  padding-left: 8px;
 }
 
-.Command .output .help .param-name {
-  margin-left: 30px;
+.Command .output .command .description {
+  grid-area: description;
+  width: calc(100% - 240px);
 }
+
+.Command .output .command .params {
+  grid-area: params;
+}
+
+/* .Command .output .param-name:before,
+.Command .output .param-name:before {
+  content: '\251C';
+  margin-right: 8px;
+}
+
+.Command .output :nth-last-of-type(n+1) .param-name:before {
+  content: '\2514';
+} */
 
 .Command h3.inline {
   display: inline-block;
@@ -80,8 +98,13 @@
 }
 
 @media screen and (max-width: 500px) {
-  .Command .output .help {
+  .Command .output .command {
     grid-template-columns: 1fr 1fr;
+  }
+  
+  .Command .output .command .name,
+  .Command .output .command .description {
+    width: 100%;
   }
 }
 

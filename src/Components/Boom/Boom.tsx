@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Boom.css'
 import youtubeQR from '../../static/qr_img.png'
+import { isMobile } from '../../Services/device';
 
 export const Boom = () => {
   const [random, setRandom] = useState(0);
@@ -18,9 +19,9 @@ export const Boom = () => {
   return (
     <div className="Boom">
       <h1>:(</h1>
-      <p>Tu ordenador parece que no es muy bueno, deberías pensarte en comprarte uno nuevo</p>
+      <p>Tu {isMobile() ? "móvil" : "ordenador"} parece que no es muy bueno, deberías pensarte en comprarte uno nuevo</p>
       <p>{random.toString()}% Completado</p>
-      <img src={youtubeQR} draggable="false" />
+      <img src={youtubeQR} alt="Código QR" draggable="false" />
       <p className="info">
         Para saber a más información escanea este código QR<br />
         <br />

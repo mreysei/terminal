@@ -1,13 +1,13 @@
 import ReactGA from 'react-ga';
-import { CommandAction, } from "../Events";
+import { CommandAction } from '../CommandAction';
 
-export const CommandWoah: CommandAction = {
+export const woah: CommandAction = {
   name: 'woah',
   action: () => {
     ReactGA.event({
       category: 'Commands',
       action: 'Conocido',
-      label: CommandWoah.name,
+      label: woah.name,
     })
 
     const url = "https://www.myinstants.com/media/sounds/woah-green-screen-video-crash-bandicoottm_EdKV0mN.mp3"

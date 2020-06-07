@@ -1,7 +1,8 @@
 import React, { useState, useEffect, FC } from 'react';
-import { useEnterPress, useKeyPress, useDeletePress, isMobile } from '../../Events';
-import { Command, CommandType } from '../Command/Command';
+import { Command } from '../Command/Command';
 import './Input.css';
+import { useKeyPress, useDeletePress, useEnterPress } from '../../Events/useKeyCodePress';
+import { isMobile } from '../../Services/device';
 
 interface InputProps {
   username: string,
@@ -17,13 +18,15 @@ export const Input: FC<InputProps> = ({ onEnter, username }) => {
   let inputForScroll: HTMLDivElement | null
 
   useEffect(() => {
-    if (keyPressed !== "") {
-      setInput(input + keyPressed);
-    }
+    if (!isMobile()) {
+      if (keyPressed !== "") {
+        setInput(input + keyPressed);
+      }
 
-    if (deletePressed && input.length > 0) {
-      const inputUpdated = input.substring(0, input.length - 1);
-      setInput(inputUpdated);
+      if (deletePressed && input.length > 0) {
+        const inputUpdated = input.substring(0, input.length - 1);
+        setInput(inputUpdated);
+      }
     }
 
     if (enterPressed) {
@@ -44,14 +47,12 @@ export const Input: FC<InputProps> = ({ onEnter, username }) => {
   }, [enterPressed, keyPressed, deletePressed]);
 
 
-  const onChange = (event: any) => {
-    if (isMobile()) setInput(event.target.value.toLowerCase());
-  }
+  const onChange = (event: any) => setInput(event.target.value.toLowerCase())
 
   return (
     <div className="Input" ref={(element) => inputForScroll = element}>
       <Command username={username} command={input} />
-      <input id="input-disable" value={input} onChange={onChange} autoFocus />
+      {isMobile() && <input id="input-disable" value={input} onChange={onChange} autoFocus />}
     </div>
   );
 }

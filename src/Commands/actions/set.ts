@@ -1,16 +1,18 @@
 import ReactGA from 'react-ga';
-import { CommandAction, getKeyValueFrom, KeyValue, containsAKey, CommandHelp } from "..";
+import { CommandAction } from '../CommandAction';
+import { help } from '.';
+import { KeyValue } from '../KeyValue';
+import { getKeyValueFrom, containsAKey } from '../Events';
 
-export const CommandSet: CommandAction = ({
+export const set: CommandAction = ({
   name: "set",
-  description: "Actualiza datos",
   params: [
-    { name: "--username=MrRobot", description: "Actualiza el nombre de usuario" },
+    { name: "--username=Link", description: "Actualiza el nombre de usuario" },
     { name: "--theme=ubuntu", description: "Actualiza el tema, las opciones son: ubuntu, dark y light" },
   ],
   action: (params): string[] => {
     if (params === undefined || params.length === 0) {
-      return errorParams([CommandSet.name]);
+      return help.action([set.name]);
     } else {
       return getValues(params);
     }
@@ -35,7 +37,7 @@ const getValues = (params: string[]): string[] => {
       return accumulator;
     }, [] as string[])
   } catch (_) {
-    return errorParams([CommandSet.name]);
+    return help.action([set.name]);
   }
 }
 
@@ -43,7 +45,7 @@ const analytics = (value: string) => {
   ReactGA.event({
     category: 'Commands',
     action: 'Conocido',
-    label: CommandSet.name + " " + value,
+    label: set.name + " " + value,
   })
 }
 
@@ -62,8 +64,3 @@ const setTheme = (accumulator: string[], param: KeyValue) => {
     accumulator.push("Vaya... parece que ese tema no existe")
   }
 }
-
-const errorParams = (params: string[]) => [
-  "Oops parece que algo ha ido mal, este comando funciona así: ",
-  ...CommandHelp.action(params),
-]
