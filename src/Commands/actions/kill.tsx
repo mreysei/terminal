@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Boom } from '../../Components/Boom/Boom';
+import { BlueScreen } from '../../Components/BlueScreen/BlueScreen';
 import { CommandAction } from '../CommandAction';
 import { error } from './error';
 import { containsAllParams } from '../Events';
@@ -23,6 +23,6 @@ export const kill: CommandAction = ({
 })
 
 const boom = () => {
-  ReactDOM.render(<Boom />, document.getElementById('App'));
+  ReactDOM.render(<BlueScreen />, document.getElementById('App'));
   return [];
 }

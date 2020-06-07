@@ -1,4 +1,4 @@
-.Boom {
+.BlueScreen {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -9,37 +9,37 @@
   font-family:'Ubuntu Mono';
 }
 
-.Boom h1 {
+.BlueScreen h1 {
   font-size: calc(100vh / 8);
   margin: 0;
   margin-bottom: 4rem;
 }
 
-.Boom p {
+.BlueScreen p {
   font-size: calc(100vh / 30);
 }
 
-.Boom p.info {
+.BlueScreen p.info {
   margin-top: 8rem;
   font-size: calc(100vh / 50);
 }
 
-.Boom img {
+.BlueScreen img {
   float:left;
   margin-right: 20px;
 }
 
 @media screen and (max-width:800px) {
-  .Boom {
+  .BlueScreen {
     padding: calc(100vh / 16);
   }
   
-  .Boom img {
+  .BlueScreen img {
     float:none;
     width: 60%;
   }
 
-  .Boom p.info {
+  .BlueScreen p.info {
     margin-top: 4rem;
   }
 } 

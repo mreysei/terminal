@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './Boom.css'
+import './BlueScreen.css'
 import youtubeQR from '../../static/qr_img.png'
 import { isMobile } from '../../Services/device';
 
-export const Boom = () => {
+export const BlueScreen = () => {
   const [random, setRandom] = useState(0);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export const Boom = () => {
   }, []);
 
   return (
-    <div className="Boom">
+    <div className="BlueScreen">
       <h1>:(</h1>
       <p>Tu {isMobile() ? "móvil" : "ordenador"} parece que no es muy bueno, deberías pensarte en comprarte uno nuevo</p>
       <p>{random.toString()}% Completado</p>
