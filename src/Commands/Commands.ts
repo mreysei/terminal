@@ -1,5 +1,5 @@
 import { CommandAction } from "./CommandAction";
-import { error, clear, help, set, get, rm, woah, pwd, open } from "./actions";
+import { error, clear, help, set, get, rm, woah, pwd, open, whoami } from "./actions";
 
 interface Dictionary<Type> {
   [key: string]: Type;
@@ -15,4 +15,5 @@ export const getAllCommands = (): Dictionary<CommandAction> => ({
   woah,
   pwd,
   open,
+  whoami,
 })
