@@ -1,4 +1,4 @@
-import { Translations } from "../../Services/translations"
+import { Translations } from "../../Services/Translations"
 
 const experience = Translations.info.experience
 const shared = Translations.shared

@@ -1,8 +1,8 @@
 import { getAllCommands } from '../Commands';
 import { CommandAction } from '../CommandAction';
-import { Analytics } from '../../Services/analytics';
+import { Analytics } from '../../Services/Analytics';
 import { error } from '.';
-import { Translations } from '../../Services/translations';
+import { Translations } from '../../Services/Translations';
 
 const texts = Translations.commands.help
 

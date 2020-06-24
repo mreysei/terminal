@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './BlueScreen.css'
 import youtubeQR from '../../static/qr_img.png'
-import { isMobile } from '../../Services/device';
+import { UserData } from '../../Services/UserData';
 
 export const BlueScreen = () => {
   const [random, setRandom] = useState(0);
@@ -19,7 +19,7 @@ export const BlueScreen = () => {
   return (
     <div className="BlueScreen">
       <h1>:(</h1>
-      <p>Tu {isMobile() ? "móvil" : "ordenador"} parece que no es muy bueno, deberías pensarte en comprarte uno nuevo</p>
+      <p>Tu {UserData.fromMobile() ? "móvil" : "ordenador"} parece que no es muy bueno, deberías pensarte en comprarte uno nuevo</p>
       <p>{random.toString()}% Completado</p>
       <img src={youtubeQR} alt="Código QR" draggable="false" />
       <p className="info">

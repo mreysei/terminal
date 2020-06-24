@@ -1,8 +1,8 @@
 import { CommandAction } from '../CommandAction';
 import { containsAllParams } from '../Events';
 import { help } from './help';
-import { Analytics } from '../../Services/analytics';
-import { Translations } from '../../Services/translations';
+import { Analytics } from '../../Services/Analytics';
+import { Translations } from '../../Services/Translations';
 
 const texts = Translations.commands.open
 

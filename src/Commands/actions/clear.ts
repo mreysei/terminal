@@ -1,6 +1,6 @@
 import { CommandAction } from '../CommandAction';
-import { Analytics } from '../../Services/analytics';
-import { Translations } from '../../Services/translations';
+import { Translations } from '../../Services/Translations';
+import { Analytics } from '../../Services/Analytics';
 
 const texts = Translations.commands.clear
 

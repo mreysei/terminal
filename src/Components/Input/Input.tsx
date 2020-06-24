@@ -2,8 +2,8 @@ import React, { useState, useEffect, FC } from 'react';
 import { Command } from '../Command/Command';
 import './Input.css';
 import { useKeyPress, useDeletePress, useEnterPress, useArrowUpPress, useArrowDownPress } from '../../Events/useKeyCodePress';
-import { isMobile } from '../../Services/device';
-import { Historic } from '../../Services/historic';
+import { Historic } from '../../Services/Historic';
+import { UserData } from '../../Services/UserData';
 
 interface InputProps {
   username: string,
@@ -38,7 +38,7 @@ export const Input: FC<InputProps> = ({ onEnter, username }) => {
   }
 
   useEffect(() => {
-    if (!isMobile()) {
+    if (!UserData.fromMobile()) {
       if (keyPressed !== "") {
         setInput(input + keyPressed);
       }
@@ -81,7 +81,7 @@ export const Input: FC<InputProps> = ({ onEnter, username }) => {
   return (
     <div className="Input" ref={(element) => inputForScroll = element}>
       <Command username={username} command={input} />
-      {isMobile() && <input id="input-disable" value={input} onChange={onChange} autoFocus />}
+      {UserData.fromMobile() && <input id="input-disable" value={input} onChange={onChange} autoFocus />}
     </div>
   );
 }

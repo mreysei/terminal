@@ -1,6 +1,6 @@
 import { CommandAction } from '../CommandAction';
-import { Analytics } from '../../Services/analytics';
-import { Historic } from '../../Services/historic';
+import { Analytics } from '../../Services/Analytics';
+import { Historic } from '../../Services/Historic';
 
 export const history: CommandAction = ({
   name: "history",

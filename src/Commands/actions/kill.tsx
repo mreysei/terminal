@@ -4,7 +4,7 @@ import { BlueScreen } from '../../Components/BlueScreen/BlueScreen';
 import { CommandAction } from '../CommandAction';
 import { error } from './error';
 import { containsAllParams } from '../Events';
-import { Analytics } from '../../Services/analytics';
+import { Analytics } from '../../Services/Analytics';
 
 export const kill: CommandAction = ({
   name: "kill",

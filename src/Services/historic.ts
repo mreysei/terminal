@@ -1,13 +1,13 @@
-const key = "historic";
+import { UserData } from "./UserData";
 
 const add = (input: string) => {
   const historic = get();
   historic.push(input)
-  localStorage.setItem(key, JSON.stringify(historic));
+  UserData.historic.set(JSON.stringify(historic))
 }
 
 const get = () => {
-  const historic = localStorage.getItem(key) || "[]";
+  const historic = UserData.historic.get()
   return JSON.parse(historic);
 }
 

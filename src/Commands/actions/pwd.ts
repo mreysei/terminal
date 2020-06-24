@@ -1,5 +1,5 @@
 import { CommandAction } from '../CommandAction';
-import { Analytics } from '../../Services/analytics';
+import { Analytics } from '../../Services/Analytics';
 
 export const pwd: CommandAction = ({
   name: "pwd",

@@ -10,14 +10,6 @@ export const containsAllParams = (params: string[], compareParams: string[]): bo
   return haveAllParams;
 }
 
-export const containsAnyParams = (params: string[], compareParams: string[]): boolean => {
-  let haveAnyParams = false;
-  compareParams.forEach(element => {
-    if (params.includes(element)) haveAnyParams = true;
-  });
-  return haveAnyParams;
-}
-
 export const containsAKey = (params: string[], key: string) => {
   let haveAKey = false;
   params.forEach((param: string) => {

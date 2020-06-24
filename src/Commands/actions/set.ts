@@ -2,8 +2,9 @@ import { CommandAction } from '../CommandAction';
 import { help } from '.';
 import { KeyValue } from '../KeyValue';
 import { getKeyValueFrom } from '../Events';
-import { Analytics } from '../../Services/analytics';
-import { Translations } from '../../Services/translations';
+import { Analytics } from '../../Services/Analytics';
+import { Translations } from '../../Services/Translations';
+import { UserData } from '../../Services/UserData';
 
 const texts = Translations.commands.set
 
@@ -34,7 +35,7 @@ const getValues = (params: string[]): string[] => {
       if (param.key === "username") {
         Analytics.command("set username")
         Analytics.value(`Nombre de usuario: ${param.value}`)
-        setUsername(param.value)
+        UserData.username.set(param.value)
         accumulator.push(texts.response.username.replace("{name}", param.value))
       } else if (param.key === "theme") {
         Analytics.command("set theme")
@@ -52,17 +53,13 @@ const getValues = (params: string[]): string[] => {
   }
 }
 
-const setUsername = (value: string) => {
-  localStorage.setItem("username", value)
-}
-
 const setTheme = (accumulator: string[], param: KeyValue) => {
   const themes = ["ubuntu", "dark", "light"];
   if (themes.includes(param.value)) {
     const body = document.getElementsByTagName('body')[0]
-    const lastTheme = localStorage.getItem(param.key) || "ubuntu"
+    const lastTheme = UserData.theme.get()
 
-    localStorage.setItem(param.key, param.value)
+    UserData.theme.set(param.value)
     body.classList.remove(lastTheme)
     body.classList.add(param.value)
 

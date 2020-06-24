@@ -1,5 +1,5 @@
 import { CommandAction } from '../CommandAction';
-import { Translations } from '../../Services/translations';
+import { Translations } from '../../Services/Translations';
 
 const texts = Translations.commands.error;
 
