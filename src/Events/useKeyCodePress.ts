@@ -14,6 +14,7 @@ const getKey = (event: KeyboardEvent): Key => ({
 
 const useKeyCodePress = () => {
   const [keyCodePressed, setKeyCodePressed] = useState(initialKey);
+  window.scrollTo(0, document.body.scrollHeight);
 
   const onKeyDown = (event: KeyboardEvent) => {
     setKeyCodePressed(getKey(event));
