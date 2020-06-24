@@ -27,6 +27,8 @@ const getterAndSetter = (key: Key, defaultValue: string) => ({
 
 export const UserData = {
   fromMobile,
+  location: () => window.location.href,
+  isInDebug: () => UserData.location().includes("localhost"),
   username: getterAndSetter(Key.username, "anonymous"),
   theme: getterAndSetter(Key.theme, "ubuntu"),
   historic: getterAndSetter(Key.historic, "[]"),

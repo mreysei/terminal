@@ -1,11 +1,14 @@
 import ReactGA from 'react-ga'
+import { UserData } from './UserData';
+
+const isInDebug = UserData.isInDebug();
 
 const initialize = () => {
-  ReactGA.initialize('UA-105839851-1');
+  if (!isInDebug) ReactGA.initialize('UA-105839851-1')
 }
 
 const toRegister = (category: string, action: string, label: string) => {
-  ReactGA.event({ category, action, label })
+  if (!isInDebug) ReactGA.event({ category, action, label })
 }
 
 const command = (name: string) => {
