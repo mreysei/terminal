@@ -3,12 +3,15 @@ import { CommandAction } from '../CommandAction';
 import { containsAllParams } from '../Events';
 import { help } from './help';
 import { Analytics } from '../../Services/analytics';
+import { Translations } from "../../Services/translations";
+
+const texts = Translations.commands.get;
 
 export const get: CommandAction = ({
   name: "get",
   params: [
-    { name: "experience", description: "Muestra mi experiencia, mis estudios y los trabajos en los que he estado" },
-    { name: "posts", description: "Muestra un listado de posts que he escrito" },
+    { name: "experience", description: texts.params.experience },
+    { name: "posts", description: texts.params.posts },
   ],
   action: (params): string[] => {
     if (params === undefined || params.length === 0) {

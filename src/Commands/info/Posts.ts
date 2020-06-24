@@ -1,22 +1,19 @@
-export const getPosts = (): string[] => {
-  return [
-    getElement(
-      "Tips de CSS que podrían ayudarte <small></small>",
-      "<a href='https://leanmind.es/es/blog/tips-css-que-podrian-ayudarte/' target='_blank'>Haz click aquí para leer el post en leanmind.es</a>",
-      "En este artículo os comparto unos tips que a mi me han ayudado a aprender CSS."
-    ),
-    getElement(
-      "Flutter, ¡una maravilla! ¿o... no? (Con Noemi Delgado)",
-      "<a href='https://leanmind.es/es/blog/flutter_una_maravilla_o_no/' target='_blank'>Haz click aquí para leer el post en leanmind.es</a>",
-      "En este artículo te contaremos nuestra vida tras varios meses tratando con esta tecnología creada por Google en 2017."
-    ),
-  ]
+import { Translations } from "../../Services/translations"
+
+const posts = Translations.info.posts
+const shared = Translations.shared
+
+interface Post {
+  title: String,
+  url: String,
+  origen: String,
+  description: String
 }
 
-const getElement = (title: string, readmore: string, description: string): string => {
-  return [
-    `<h3 class="inline">${title}</h3>`,
-    `<p>${description}</p>`,
-    `<small>${readmore}</small>`,
-  ].join("")
-}
+const transform = (post: Post): string => [
+  `<h3 class="inline">${post.title}</h3>`,
+  `<p>${post.description}</p>`,
+  `<small><a href='${post.url}' target='_blank'>${shared.readPost.replace("{origen}", post.origen)}</a></small>`,
+].join("")
+
+export const getPosts = (): string[] => posts.map(transform)

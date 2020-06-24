@@ -1,0 +1,88 @@
+{
+  "experience": [
+    {
+      "name": "LeanMind",
+      "url": "https://leanmind.es",
+      "positions": [
+        {
+          "name": "Full Stack Developer",
+          "from": "01/07/2018"
+        }
+      ],
+      "description": "Múltiples desarrollos con Kotlin, React, Flutter, TypeScript y muchos más, lo que importa es cuidar el código con clean code, testing y buenas prácticas, el lenguaje es lo de menos."
+    },
+    {
+      "name": "Omnia Infosys",
+      "url": "https://omniainfosys.com",
+      "positions": [
+        {
+          "name": "Programador de aplicaciones informáticas",
+          "from": "01/12/2017",
+          "to": "01/03/2018"
+        }
+      ],
+      "description": "Desarrollo para actualizar la web de la Universidad de La Laguna, un contrato por obra y servicio."
+    },
+    {
+      "name": "Bakata Solutions SL",
+      "url": "https://bakata.es",
+      "positions": [
+        {
+          "name": "Becario",
+          "from": "01/07/2017",
+          "to": "01/12/2017"
+        },
+        {
+          "name": "Formación en centros de trabajo",
+          "from": "01/03/2017",
+          "to": "01/06/2017"
+        }
+      ],
+      "description": "Desarrollo principalmente en un ERP con tecnologías como C# .NET JavaScript y jQuery, también alguna aplicación móvil con Xamarin y alguna web con Wordpress."
+    },
+    {
+      "name": "CIFP César Manrique",
+      "url": "https://cifpcesarmanrique.es",
+      "positions": [
+        {
+          "from": "01/09/2015",
+          "to": "01/06/2017"
+        }
+      ],
+      "description": "Hice el ciclo superior de Desarrollo de Aplicaciones Web donde aprendí tecnologías como JavaScript, C#, Java, PHP y jQuery, también despliegue de sistemas, uso de sistemas operativos, UX y UI. Aprendí a aprender."
+    },
+    {
+      "name": "Autónomo",
+      "positions": [
+        {
+          "from": "01/01/2014",
+          "to": "01/10/2015"
+        }
+      ],
+      "description": "Diseño web responsive con HTML, CSS, JS, jQuery y Bootstrap."
+    }
+  ],
+  "posts": [
+    {
+      "title": "BLoC Pattern de Flutter",
+      "url": "https://leanmind.es/es/blog/bloc-pattern/",
+      "origen": "leanmind.es",
+      "date": "19/06/2020",
+      "description": "En este artículo os cuento con código cómo funciona el BLoC Pattern de Flutter."
+    },
+    {
+      "title": "Tips de CSS que podrían ayudarte",
+      "url": "https://leanmind.es/es/blog/tips-css-que-podrian-ayudarte/",
+      "origen": "leanmind.es",
+      "date": "02/03/2020",
+      "description": "En este artículo os comparto unos tips que a mi me han ayudado a aprender CSS."
+    },
+    {
+      "title": "Flutter, ¡una maravilla! ¿o... no? (Con Noemi Delgado)",
+      "url": "https://leanmind.es/es/blog/flutter_una_maravilla_o_no/",
+      "origen": "leanmind.es",
+      "date": "28/01/2020",
+      "description": "En este artículo te contaremos nuestra vida tras varios meses tratando con esta tecnología creada por Google en 2017."
+    }
+  ]
+}

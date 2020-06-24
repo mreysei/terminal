@@ -1,9 +1,9 @@
 import { CommandAction } from '../CommandAction';
+import { Translations } from '../../Services/translations';
+
+const texts = Translations.commands.error;
 
 export const error: CommandAction = ({
   name: "error",
-  action: () => [
-    "Oops! Ha ocurrido un error, resulta que ese comando no existe :( <br />" +
-    "Prueba a escribir 'help', quizás te sea de ayuda",
-  ]
+  action: () => texts.responses as string[]
 })

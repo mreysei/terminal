@@ -1,11 +1,14 @@
 import { CommandAction } from '../CommandAction';
 import { Analytics } from '../../Services/analytics';
+import { Translations } from '../../Services/translations';
+
+const texts = Translations.commands.hola
 
 export const hola: CommandAction = ({
   name: "hola",
   action: (): string[] => {
     Analytics.command("hola");
 
-    return ["Em... HOLII, no esperaba que me saludases, la verdad, pero se agradese, prueba a usar el comando 'help' :)"]
+    return [texts.response]
   },
 }) 

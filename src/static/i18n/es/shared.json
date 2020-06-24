@@ -1,0 +1,20 @@
+{
+  "months": [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre"
+  ],
+  "readPost": "Haz click aquí para leer el post en {origen}",
+  "from": "Desde",
+  "to": "hasta",
+  "currentDate": "la actualidad"
+}

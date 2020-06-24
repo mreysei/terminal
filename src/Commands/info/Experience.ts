@@ -1,40 +1,53 @@
-export const getExperience = (): string[] => {
-  return [
-    getElement(
-      "Lean Mind <small>(<a href='https://leanmind.es' target='_blank'>leanmind.es</a>)</small>",
-      ["Full Stack Developer - desde julio de 2018 hasta la actualidad"],
-      "Múltiples desarrollos con Kotlin, React, Flutter, TypeScript y muchos más, lo que importa es cuidar el código con clean code, testing y buenas prácticas, el lenguaje es lo de menos."
-    ),
-    getElement(
-      "Omnia Infosys <small>(<a href='https://omniainfosys.com' target='_blank'>omniainfosys.com</a>)</small>",
-      ["Programador de aplicaciones informáticas - desde diciembre de 2017 hasta marzo de 2018"],
-      "Desarrollo para actualizar la web de la Universidad de La Laguna, un contrato por obra y servicio."
-    ),
-    getElement(
-      "Bakata Solutions SL <small>(<a href='https://bakata.es' target='_blank'>bakata.es</a>)</small>",
-      [
-        "Formación en centros de trabajo - desde marzo de 2017 hasta junio de 2017",
-        "Becario - desde julio de 2017 hasta diciembre de 2017",
-      ],
-      "Desarrollo principalmente en un ERP con tecnologías como C# .NET JavaScript y jQuery, también alguna aplicación móvil con Xamarin y alguna web con Wordpress."
-    ),
-    getElement(
-      "CIFP César Manrique <small>(<a href='https://cifpcesarmanrique.es' target='_blank'>cifpcesarmanrique.es</a>)</small>",
-      ["Desde septiembre de 2015 hasta junio de 2017"],
-      "Hice el ciclo superior de Desarrollo de Aplicaciones Web donde aprendí tecnologías como JavaScript, C#, Java, PHP y jQuery, también despliegue de sistemas, uso de sistemas operativos, UX y UI. Aprendí a aprender."
-    ),
-    getElement(
-      "Autónomo",
-      ["Desde enero de 2014 hasta octubre de 2015"],
-      "Diseño web responsive con HTML, CSS, JS, jQuery y Bootstrap."
-    ),
-  ]
+import { Translations } from "../../Services/translations"
+
+const experience = Translations.info.experience
+const shared = Translations.shared
+
+interface Experience {
+  name: String,
+  url?: String,
+  positions: Position[],
+  description: String
 }
 
-const getElement = (title: string, subtitles: string[], description?: string): string => {
+interface Position {
+  name?: String,
+  from: String,
+  to?: String,
+}
+
+export const getExperience = (): string[] => experience.map(transform)
+
+const transform = (experience: Experience): String => {
   return [
-    `<h3 class="inline">${title}</h3><br />`,
-    ...subtitles.map((subtitle) => `  <small>${subtitle}</small><br />`),
-    description !== undefined ? `<p>${description}</p>` : ``,
-  ].join("");
+    getName(experience.name),
+    getUrl(experience.url),
+    "<br />",
+    experience.positions.map(getPosition).join(""),
+    getDescription(experience.description)
+  ].join("")
+}
+
+const getName = (name: String) =>
+  `<h3 class="inline">${name}</h3>`
+
+const getUrl = (url: String | undefined) => url
+  ? ` <small>(<a href='${url}' target='_blank'>${url}</a>)</small>`
+  : ``
+
+const getPosition = (position: Position) =>
+  `  <small>${position.name ? `${position.name} - ` : ""}${shared.from} ${formatDate(position.from)} ${shared.to} ${formatDate(position.to)}</small><br />`;
+
+const getDescription = (description: String) =>
+  `<p>${description}</p>`;
+
+const formatDate = (dateString: String | undefined) => {
+  if (!dateString) return shared.currentDate
+
+  const months = shared.months;
+  const dateSplitted = dateString.split("/");
+  const month = Number(dateSplitted[1]) - 1;
+  const year = Number(dateSplitted[2]);
+
+  return `${months[month]} ${year}`
 }

@@ -3,12 +3,15 @@ import { help } from '.';
 import { KeyValue } from '../KeyValue';
 import { getKeyValueFrom } from '../Events';
 import { Analytics } from '../../Services/analytics';
+import { Translations } from '../../Services/translations';
+
+const texts = Translations.commands.set
 
 export const set: CommandAction = ({
   name: "set",
   params: [
-    { name: "--username=Link", description: "Actualiza el nombre de usuario" },
-    { name: "--theme=ubuntu", description: "Actualiza el tema, las opciones son: ubuntu, dark y light" },
+    { name: "--username=Link", description: texts.params.username },
+    { name: "--theme=ubuntu", description: texts.params.theme },
   ],
   action: (params): string[] => {
     if (params === undefined || params.length === 0) {
@@ -32,14 +35,14 @@ const getValues = (params: string[]): string[] => {
         Analytics.command("set username")
         Analytics.value(`Nombre de usuario: ${param.value}`)
         setUsername(param.value)
-        accumulator.push(`Hola ${param.value}!! Se actualizó tu ${param.key}`)
+        accumulator.push(texts.response.username.replace("{name}", param.value))
       } else if (param.key === "theme") {
         Analytics.command("set theme")
         Analytics.value(`Tema: ${param.value}`);
         setTheme(accumulator, param)
       } else {
         Analytics.error(`set --${param.key}=${param.value}`)
-        accumulator.push(`No se reconoció la variable "${param.key}" :v`)
+        accumulator.push(texts.response.unknown.replace("{key}", param.key))
       }
       return accumulator
     }, [] as string[])
@@ -63,8 +66,8 @@ const setTheme = (accumulator: string[], param: KeyValue) => {
     body.classList.remove(lastTheme)
     body.classList.add(param.value)
 
-    accumulator.push(`El tema se ha actualizado a ${param.value}!!`)
+    accumulator.push(texts.response.theme.success.replace("{theme}", param.value))
   } else {
-    accumulator.push("Vaya... parece que ese tema no existe")
+    accumulator.push(texts.response.theme.error)
   }
 }

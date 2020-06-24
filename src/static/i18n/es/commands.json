@@ -1,0 +1,70 @@
+{
+  "clear": {
+    "description": "Limpia la terminal"
+  },
+  "error": {
+    "responses": [
+      "Oops! Ha ocurrido un error, resulta que ese comando no existe :(",
+      "Prueba a escribir 'help', quizás te sea de ayuda"
+    ]
+  },
+  "get": {
+    "params": {
+      "experience": "Muestra la experiencia, los estudios en los que he estado ",
+      "posts": "Muestra un listado de posts que he escrito"
+    }
+  },
+  "help": {
+    "description": "Lista comandos que se pueden realizar (¡pero no todos!)",
+    "response": {
+      "initial": "Estos son los comandos disponibles:",
+      "specificCommand": "Este comando funciona así:",
+      "final": "Pero además de estos comando... hay otros escondidos que no mencionaré..."
+    }
+  },
+  "hola": {
+    "response": "Em... HOLII, no esperaba que me saludases, la verdad, pero se agradese, prueba a usar el comando 'help' :)"
+  },
+  "open": {
+    "params": {
+      "work": "Abre la web de LeanMind",
+      "linkedin": "Abre mi perfil de LinkedIn",
+      "github": "Abre mi perfil de Github",
+      "twitter": "Abre mi perfil de Twitter",
+      "instagram": "Abre mi perfil de Instagram"
+    },
+    "response": {
+      "work": "¡Abriendo la web de LeanMind!",
+      "linkedin": "¡Abriendo mi LinkedIn!",
+      "github": "¡Abriendo mi Github!",
+      "twitter": "¡Abriendo mi Twitter!",
+      "instagram": "¡Abriendo mi Instagram!"
+    }
+  },
+  "sad": {
+    "responses": [
+      "Ohh, no estés triste... :(",
+      "¿Estás bien? ¿quiéres hablar?"
+    ]
+  },
+  "set": {
+    "params": {
+      "username": "Actualiza el nombre de usuario",
+      "theme": "Actualiza el tema, las opciones son: ubuntu, dark y light"
+    },
+    "response": {
+      "username": "¡¡Hola {name}!! Se actualizó tu nombre de usuario",
+      "theme": {
+        "success": "¡El tema se ha actualizado a {theme}!",
+        "error": "Vaya... parece que ese tema no existe :("
+      },
+      "unknown": "No se reconoció la variable '{key}' :v"
+    }
+  },
+  "sudo": {
+    "response": "<img src='{imageUrl}' alt='Gandalf diciendo que no pasarás'>"
+  },
+  "woah": {
+    "response": "Woah.... Woah.... Woah.... Woah! WOAHWOAHWOAHWOAH"
+  }
+}

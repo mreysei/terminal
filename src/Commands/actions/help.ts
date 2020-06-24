@@ -2,17 +2,20 @@ import { getAllCommands } from '../Commands';
 import { CommandAction } from '../CommandAction';
 import { Analytics } from '../../Services/analytics';
 import { error } from '.';
+import { Translations } from '../../Services/translations';
+
+const texts = Translations.commands.help
 
 export const help: CommandAction = ({
   name: "help",
-  description: "Lista los comandos que se pueden realizar",
+  description: texts.description,
   action: (params: string[] | undefined): string[] => {
     const commands = getAllCommands()
-    let initialMessage = "Estos son los comandos disponibles:"
+    let initialMessage = texts.response.initial
     let keys = Object.keys(commands)
 
     if (params !== undefined && params.length > 0) {
-      initialMessage = "Este comando funciona así: "
+      initialMessage = texts.response.specificCommand
       keys = params
     }
 
@@ -29,7 +32,7 @@ export const help: CommandAction = ({
         Analytics.command(`help ${keys.join(" ")}`)
       } else {
         Analytics.command("help");
-        messages.push("Pero además de estos comandos... hay otros escondidos que no mencionaré...")
+        messages.push(texts.response.final)
       }
       return messages;
     } else {
