@@ -1,4 +1,8 @@
 {
+  "selectMode": "¿Qué modo eliges?",
+  "personMode": "Person mode",
+  "developerMode": "Developer mode",
+  "terminal": "¡Bienvenido a mi terminal! Para empezar prueba el comando 'help'",
   "months": [
     "Enero",
     "Febrero",
@@ -16,5 +20,11 @@
   "readPost": "Haz click aquí para leer el post en {origen}",
   "from": "Desde",
   "to": "hasta",
-  "currentDate": "la actualidad"
+  "currentDate": "la actualidad",
+  "boom": {
+    "bad": "Tu {device} parece que no es muy bueno, deberías pensarte en comprarte uno nuevo",
+    "complete": "Completado",
+    "qr": "Para saber a más información escanea este código QR",
+    "error": "Código de error: ¡WOAH!"
+  }
 }

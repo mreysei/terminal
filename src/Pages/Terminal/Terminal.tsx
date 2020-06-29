@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Logo, Input, Historic, Command } from '..';
+import { Logo, Input, Historic, Command, LogoType } from '../../Components';
 import './Terminal.css';
 import { CommandAction } from '../../Commands/CommandAction';
 import { getCommandByName } from '../../Commands/Events';
@@ -7,6 +7,9 @@ import { error } from '../../Commands/actions';
 import { Historic as HistoricService } from '../../Services/Historic';
 import { Analytics } from '../../Services/Analytics';
 import { UserData } from '../../Services/UserData';
+import { Translations } from '../../Services/Translations';
+
+const texts = Translations.shared
 
 export const Terminal = () => {
   const getUsername = () => UserData.username.get()
@@ -49,7 +52,11 @@ export const Terminal = () => {
 
   return (
     <div className="Terminal">
-      {logoEnable && <Logo />}
+      {logoEnable && <div>
+        <Logo type={LogoType.terminal} />
+        <br />
+        {texts.terminal}
+      </div>}
       <Historic commands={historic} />
       <Input username={username} onEnter={onSendCommand} />
     </div>

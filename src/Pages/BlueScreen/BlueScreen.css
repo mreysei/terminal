@@ -6,7 +6,7 @@
   min-height: 100vh;
   color: white;
   padding: calc(100vh / 8);
-  font-family:'Ubuntu Mono';
+  font-family: "Ubuntu Mono", monospace;
 }
 
 .BlueScreen h1 {

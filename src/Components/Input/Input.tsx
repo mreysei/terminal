@@ -73,7 +73,7 @@ export const Input: FC<InputProps> = ({ onEnter, username }) => {
       setInput("");
       document.getElementById('input-disable')?.setAttribute("value", "");
     }
-  }, [enterPressed, keyPressed, deletePressed, arrowUpPressed, arrowDownPressed]);
+  }, [enterPressed, keyPressed, deletePressed, arrowUpPressed, arrowDownPressed]); // eslint-disable-line react-hooks/exhaustive-deps
 
 
   const onChange = (event: any) => setInput(event.target.value.toLowerCase())

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './BlueScreen.css'
 import youtubeQR from '../../static/qr_img.png'
 import { UserData } from '../../Services/UserData';
+import { Translations } from '../../Services/Translations';
+
+const texts = Translations.shared.boom
 
 export const BlueScreen = () => {
   const [random, setRandom] = useState(0);
@@ -19,14 +22,14 @@ export const BlueScreen = () => {
   return (
     <div className="BlueScreen">
       <h1>:(</h1>
-      <p>Tu {UserData.fromMobile() ? "móvil" : "ordenador"} parece que no es muy bueno, deberías pensarte en comprarte uno nuevo</p>
-      <p>{random.toString()}% Completado</p>
+      <p>{texts.bad.replace("{device}", UserData.fromMobile() ? "móvil" : "ordenador")}</p>
+      <p>{random.toString()}% {texts.complete}</p>
       <img src={youtubeQR} alt="Código QR" draggable="false" />
       <p className="info">
-        Para saber a más información escanea este código QR<br />
+        {texts.qr}<br />
         <br />
         <br />
-        Código de error: WOAH!!
+        {texts.error}
       </p>
     </div>
   )

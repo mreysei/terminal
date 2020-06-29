@@ -1,6 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BlueScreen } from '../../Components/BlueScreen/BlueScreen';
 import { CommandAction } from '../CommandAction';
 import { error } from './error';
 import { containsAllParams } from '../Events';
@@ -14,15 +11,11 @@ export const kill: CommandAction = ({
       return error.action();
     } else if (containsAllParams(params, ["-9"])) {
       Analytics.command("kill -9")
-      return boom();
+      window.open('/boom', '_self');
+      return ["¡Boom!"];
     } else {
       Analytics.error(`kill ${params.join(" ")}`)
       return error.action();
     }
   },
 })
-
-const boom = () => {
-  ReactDOM.render(<BlueScreen />, document.getElementById('App'));
-  return [];
-}

@@ -34,5 +34,5 @@ export const Command: FC<CommandProps> = ({ username, directory, command, output
 )
 
 const stringToHtml = (line: string, i: number) => (
-  <div className="output" key={`line-${i}`} dangerouslySetInnerHTML={{ __html: line }}>{}</div>
+  <div className="output" key={`line-${i}`} dangerouslySetInnerHTML={{ __html: line }}>{}</div> // eslint-disable-line react/no-danger-with-children
 )
