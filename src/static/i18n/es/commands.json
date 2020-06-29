@@ -8,6 +8,10 @@
       "Prueba a escribir 'help', quizás te sea de ayuda"
     ]
   },
+  "exit": {
+    "description": "Vuelve a la pantalla inicial",
+    "response": "Volviendo..."
+  },
   "get": {
     "params": {
       "experience": "Muestra la experiencia, los estudios en los que he estado ",

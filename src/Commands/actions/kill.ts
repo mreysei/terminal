@@ -2,6 +2,7 @@ import { CommandAction } from '../CommandAction';
 import { error } from './error';
 import { containsAllParams } from '../Events';
 import { Analytics } from '../../Services/Analytics';
+import { Pages } from '../../App';
 
 export const kill: CommandAction = ({
   name: "kill",
@@ -11,7 +12,7 @@ export const kill: CommandAction = ({
       return error.action();
     } else if (containsAllParams(params, ["-9"])) {
       Analytics.command("kill -9")
-      window.open('/boom', '_self');
+      window.open(Pages.boom, '_self');
       return ["¡Boom!"];
     } else {
       Analytics.error(`kill ${params.join(" ")}`)

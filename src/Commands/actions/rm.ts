@@ -2,6 +2,7 @@ import { CommandAction } from '../CommandAction';
 import { error } from './error';
 import { containsAllParams } from '../Events';
 import { Analytics } from '../../Services/Analytics';
+import { Pages } from '../../App';
 
 export const rm: CommandAction = ({
   name: "rm",
@@ -11,7 +12,7 @@ export const rm: CommandAction = ({
       return error.action();
     } else if (containsAllParams(params, ["-rf", "*"]) || containsAllParams(params, ["-rf"])) {
       Analytics.command("rm -rf")
-      window.open('/boom', '_self');
+      window.open(Pages.boom, '_self');
       return ["¡Boom!"];
     } else {
       Analytics.error(`rm ${params.join(" ")}`)
