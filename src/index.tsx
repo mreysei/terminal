@@ -3,14 +3,17 @@ import ReactDOM from 'react-dom';
 import DocumentMeta from 'react-document-meta';
 import { App } from './App';
 import * as serviceWorker from './serviceWorker';
+import { Translations } from './Services/Translations';
+
+const texts = Translations.shared
 
 const meta = {
   title: "mreysei | Michael Reyes Seiffert",
-  description: "¡Mi terminal personal!",
+  description: texts.pageDescription,
   meta: {
     charset: 'utf-8',
     name: {
-      keywords: 'react,tdd,bdd,testing,test,clean code,terminal,console,consola,javascript,typescript,lean mind,leanmind,carlosble'
+      keywords: 'react,tdd,bdd,testing,test,clean code,terminal,console,consola,javascript,typescript,lean mind,leanmind,carlosble,carlos ble'
     }
   }
 }

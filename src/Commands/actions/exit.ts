@@ -1,7 +1,7 @@
 import { CommandAction } from '../CommandAction';
 import { Analytics } from '../../Services/Analytics';
 import { Translations } from '../../Services/Translations';
-import { Pages } from '../../App';
+import { Pages } from "../../Enums/Pages";
 
 const texts = Translations.commands.exit
 

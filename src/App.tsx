@@ -6,13 +6,8 @@ import { Analytics } from './Services/Analytics';
 import { UserData } from './Services/UserData';
 import { BlueScreen } from './Pages/BlueScreen/BlueScreen';
 import { Initial } from './Pages/Initial/Initial';
+import { Pages } from './Enums/Pages';
 
-export enum Pages {
-  initial = "/",
-  terminal = "/terminal",
-  home = "/home",
-  boom = "/boom"
-}
 
 export const App = () => {
   const currentTheme = UserData.theme.get()
@@ -24,8 +19,8 @@ export const App = () => {
     <Router>
       <div className="App">
         <Switch>
-          <Route path={Pages.boom}><BlueScreen /></Route>
-          <Route path={Pages.terminal}><Terminal /></Route>
+          <Route path={Pages.boom} exact><BlueScreen /></Route>
+          <Route path={Pages.terminal} exact><Terminal /></Route>
           <Route path={Pages.initial}><Initial /></Route>
         </Switch>
       </div>

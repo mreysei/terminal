@@ -3,7 +3,7 @@ import './Initial.css';
 import { Logo, LogoType } from "../../Components";
 import { Translations } from "../../Services/Translations";
 import { Link } from "react-router-dom";
-import { Pages } from "../../App";
+import { Pages } from "../../Enums/Pages";
 
 const texts = Translations.shared
 

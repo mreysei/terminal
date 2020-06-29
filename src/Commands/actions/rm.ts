@@ -2,7 +2,7 @@ import { CommandAction } from '../CommandAction';
 import { error } from './error';
 import { containsAllParams } from '../Events';
 import { Analytics } from '../../Services/Analytics';
-import { Pages } from '../../App';
+import { Pages } from "../../Enums/Pages";
 
 export const rm: CommandAction = ({
   name: "rm",
