@@ -1,7 +1,5 @@
 import { Translations } from "../../Services/Translations"
 
-const experience = Translations.info.experience
-const shared = Translations.shared
 
 interface Experience {
   name: String,
@@ -16,7 +14,7 @@ interface Position {
   to?: String,
 }
 
-export const getExperience = (): string[] => experience.map(transform)
+export const getExperience = (): string[] => Translations().info.experience.map(transform)
 
 const transform = (experience: Experience): String => {
   return [
@@ -36,15 +34,15 @@ const getUrl = (url: String | undefined) => url
   : ``
 
 const getPosition = (position: Position) =>
-  `  <small>${position.name ? `${position.name} - ` : ""}${shared.from} ${formatDate(position.from)} ${shared.to} ${formatDate(position.to)}</small><br />`;
+  `  <small>${position.name ? `${position.name} - ` : ""}${Translations().shared.from} ${formatDate(position.from)} ${Translations().shared.to} ${formatDate(position.to)}</small><br />`;
 
 const getDescription = (description: String) =>
   `<p>${description}</p>`;
 
 const formatDate = (dateString: String | undefined) => {
-  if (!dateString) return shared.currentDate
+  if (!dateString) return Translations().shared.currentDate
 
-  const months = shared.months;
+  const months = Translations().shared.months;
   const dateSplitted = dateString.split("/");
   const month = Number(dateSplitted[1]) - 1;
   const year = Number(dateSplitted[2]);

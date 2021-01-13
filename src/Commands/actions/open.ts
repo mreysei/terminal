@@ -4,18 +4,17 @@ import { help } from './help';
 import { Analytics } from '../../Services/Analytics';
 import { Translations } from '../../Services/Translations';
 
-const texts = Translations.commands.open
-
 export const open: CommandAction = ({
   name: "open",
   params: [
-    { name: "work", description: texts.params.work },
-    { name: "linkedin", description: texts.params.linkedin },
-    { name: "github", description: texts.params.github },
-    { name: "twitter", description: texts.params.twitter },
-    { name: "instagram", description: texts.params.instagram },
+    { name: "work", description: Translations().commands.open.params.work },
+    { name: "linkedin", description: Translations().commands.open.params.linkedin },
+    { name: "github", description: Translations().commands.open.params.github },
+    { name: "twitter", description: Translations().commands.open.params.twitter },
+    { name: "instagram", description: Translations().commands.open.params.instagram },
   ],
   action: (params): string[] => {
+    const texts = Translations().commands.open
     if (params === undefined || params.length === 0) {
       Analytics.command("open")
       return help.action([open.name]);

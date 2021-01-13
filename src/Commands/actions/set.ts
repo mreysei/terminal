@@ -6,13 +6,13 @@ import { Analytics } from '../../Services/Analytics';
 import { Translations } from '../../Services/Translations';
 import { UserData } from '../../Services/UserData';
 
-const texts = Translations.commands.set
 
 export const set: CommandAction = ({
   name: "set",
   params: [
-    { name: "--username=Link", description: texts.params.username },
-    { name: "--theme=ubuntu", description: texts.params.theme },
+    { name: "--username=Link", description: Translations().commands.set.params.username },
+    { name: "--locale=es", description: Translations().commands.set.params.locale },
+    { name: "--theme=ubuntu", description: Translations().commands.set.params.theme },
   ],
   action: (params): string[] => {
     if (params === undefined || params.length === 0) {
@@ -25,6 +25,7 @@ export const set: CommandAction = ({
 })
 
 const getValues = (params: string[]): string[] => {
+  const texts = Translations().commands.set
   try {
     const keyValues: KeyValue[] = getKeyValueFrom(params);
     if (keyValues.length === 0) {
@@ -37,9 +38,13 @@ const getValues = (params: string[]): string[] => {
         Analytics.value(`Nombre de usuario: ${param.value}`)
         UserData.username.set(param.value)
         accumulator.push(texts.response.username.replace("{name}", param.value))
+      } else if (param.key === "locale") {
+        Analytics.command("set locale")
+        Analytics.value(`Idioma: ${param.value}`)
+        setLocale(accumulator, param)
       } else if (param.key === "theme") {
         Analytics.command("set theme")
-        Analytics.value(`Tema: ${param.value}`);
+        Analytics.value(`Tema: ${param.value}`)
         setTheme(accumulator, param)
       } else {
         Analytics.error(`set --${param.key}=${param.value}`)
@@ -53,8 +58,18 @@ const getValues = (params: string[]): string[] => {
   }
 }
 
+const setLocale = (accumulator: string[], param: KeyValue) => {
+  const locals = ["es", "en"];
+  const translation = Translations().commands.set.response.locale;
+
+  UserData.locale.set(param.value)
+  accumulator.push(locals.includes(param.value) ? translation.success : translation.error)
+}
+
 const setTheme = (accumulator: string[], param: KeyValue) => {
   const themes = ["ubuntu", "dark", "light"];
+  const translation = Translations().commands.set.response.theme;
+
   if (themes.includes(param.value)) {
     const body = document.getElementsByTagName('body')[0]
     const lastTheme = UserData.theme.get()
@@ -63,8 +78,8 @@ const setTheme = (accumulator: string[], param: KeyValue) => {
     body.classList.remove(lastTheme)
     body.classList.add(param.value)
 
-    accumulator.push(texts.response.theme.success.replace("{theme}", param.value))
+    accumulator.push(translation.success.replace("{theme}", param.value))
   } else {
-    accumulator.push(texts.response.theme.error)
+    accumulator.push(translation.error)
   }
 }

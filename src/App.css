@@ -25,3 +25,9 @@ body.light {
 * {
   box-sizing: border-box;
 }
+
+.Terminal {
+  font-size: 16px;
+  padding: 0.4rem;
+  font-family: "Ubuntu Mono", monospace;
+}

@@ -4,12 +4,11 @@ import { Analytics } from '../../Services/Analytics';
 import { error } from '.';
 import { Translations } from '../../Services/Translations';
 
-const texts = Translations.commands.help
-
 export const help: CommandAction = ({
   name: "help",
-  description: texts.description,
+  description: Translations().commands.help.description,
   action: (params: string[] | undefined): string[] => {
+    const texts = Translations().commands.help
     const commands = getAllCommands()
     let initialMessage = texts.response.initial
     let keys = Object.keys(commands)
@@ -31,8 +30,9 @@ export const help: CommandAction = ({
       if (keys.length === 1) {
         Analytics.command(`help ${keys.join(" ")}`)
       } else {
+        const response = texts.response.final;
         Analytics.command("help");
-        messages.push(texts.response.final)
+        messages.push(response)
       }
       return messages;
     } else {

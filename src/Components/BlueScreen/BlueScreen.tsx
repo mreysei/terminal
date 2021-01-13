@@ -4,10 +4,9 @@ import youtubeQR from '../../static/qr_img.png'
 import { UserData } from '../../Services/UserData';
 import { Translations } from '../../Services/Translations';
 
-const texts = Translations.shared.boom
-
 export const BlueScreen = () => {
   const [random, setRandom] = useState(0);
+  const texts = Translations().shared.boom
 
   useEffect(() => {
     const url = "https://www.myinstants.com/media/sounds/y2mate-mp3cut_sRzY6rh.mp3"

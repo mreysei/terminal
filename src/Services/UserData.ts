@@ -2,6 +2,7 @@ import { Storage } from "./Storage";
 
 enum Key {
   username = "username",
+  locale = "locale",
   theme = "theme",
   historic = "historic"
 }
@@ -31,5 +32,6 @@ export const UserData = {
   isInDebug: () => UserData.location().includes("localhost"),
   username: getterAndSetter(Key.username, "anonymous"),
   theme: getterAndSetter(Key.theme, "ubuntu"),
+  locale: getterAndSetter(Key.locale, "es"),
   historic: getterAndSetter(Key.historic, "[]"),
 }

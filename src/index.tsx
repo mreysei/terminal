@@ -5,11 +5,9 @@ import { App } from './App';
 import * as serviceWorker from './serviceWorker';
 import { Translations } from './Services/Translations';
 
-const texts = Translations.shared
-
 const meta = {
   title: "mreysei | Michael Reyes Seiffert",
-  description: texts.pageDescription,
+  description: Translations().shared.pageDescription,
   meta: {
     charset: 'utf-8',
     name: {
