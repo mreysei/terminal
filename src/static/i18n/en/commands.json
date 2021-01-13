@@ -4,7 +4,7 @@
   },
   "error": {
     "responses": [
-      "Oops! Ha ocurrido un error, resulta que ese comando no existe :(",
+      "Oops! Ha ocurrido un error, resulta que ese comando no existe o está mal escrito :v",
       "Prueba a escribir 'help', quizás te sea de ayuda"
     ]
   },
@@ -26,28 +26,26 @@
       "final": "Pero además de estos comando... hay otros escondidos que no mencionaré..."
     }
   },
+  "history": {
+    "description": "Muestra un historico de los comandos que se han utilizado"
+  },
   "hola": {
-    "response": "Em... Hulaa, no esperaba que me saludases, la verdad, pero se agradese, prueba a usar el comando 'help' :)"
+    "response": "Em... Hulaa, no esperaba que me saludases, la verdad, pero se agradese, prueba a usar el comando 'help' 😀"
   },
   "open": {
     "params": {
-      "work": "Abre la web de LeanMind",
-      "linkedin": "Abre mi perfil de LinkedIn",
-      "github": "Abre mi perfil de Github",
-      "twitter": "Abre mi perfil de Twitter",
-      "instagram": "Abre mi perfil de Instagram"
+      "work": "Abre en una nueva pestaña la web de LeanMind",
+      "generic": "Abre en una nueva pestaña el {name} del propietario",
+      "email": "Envía un correo al propietario"
     },
-    "response": {
-      "work": "¡Abriendo la web de LeanMind!",
-      "linkedin": "¡Abriendo mi LinkedIn!",
-      "github": "¡Abriendo mi Github!",
-      "twitter": "¡Abriendo mi Twitter!",
-      "instagram": "¡Abriendo mi Instagram!"
-    }
+    "response": "Se ha abierto {page}"
+  },
+  "pwd": {
+    "description": "Muestra el directorio de trabajo actual"
   },
   "sad": {
     "responses": [
-      "Ohh, no estés triste... :(",
+      "Ohh, no estés triste... 😭",
       "¿Estás bien? ¿quiéres hablar?"
     ]
   },
@@ -58,20 +56,23 @@
       "theme": "Actualiza el tema, las opciones son: ubuntu, dark y light"
     },
     "response": {
-      "username": "¡¡Hola {name}!! Se actualizó tu nombre de usuario",
+      "username": "Se actualizó el nombre de usuario a {name} 😯",
       "locale": {
-        "success": "¡Idioma actualizado!",
-        "error": "Vaya... parece que no tengo ese idioma :("
+        "success": "Idioma actualizado",
+        "error": "Vaya... parece que no está ese idioma disponible 😢"
       },
       "theme": {
-        "success": "¡El tema se ha actualizado a {theme}!",
-        "error": "Vaya... parece que ese tema no existe :("
+        "success": "El tema se ha actualizado a {theme}",
+        "error": "Vaya... parece que ese tema no existe 😭"
       },
-      "unknown": "No se reconoció la variable '{key}' :v"
+      "unknown": "No se reconoció la variable '{key}' 😕"
     }
   },
   "sudo": {
     "response": "<img src='{imageUrl}' alt='Gandalf diciendo que no pasarás'>"
+  },
+  "whoami": {
+    "description": "Muestra el nombre del usuario que ha invocado este comando"
   },
   "woah": {
     "response": "Woah.... Woah.... Woah.... Woah! WOAHWOAHWOAHWOAH"

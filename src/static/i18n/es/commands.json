@@ -27,7 +27,7 @@
     }
   },
   "history": {
-    "description": "Muestra un historico de los comandos que has realizado"
+    "description": "Muestra un historico de los comandos que se han utilizado"
   },
   "hola": {
     "response": "Em... Hulaa, no esperaba que me saludases, la verdad, pero se agradese, prueba a usar el comando 'help' 😀"
@@ -41,7 +41,7 @@
     "response": "Se ha abierto {page}"
   },
   "pwd": {
-    "description": "Muestra tu directorio de trabajo actual"
+    "description": "Muestra el directorio de trabajo actual"
   },
   "sad": {
     "responses": [
