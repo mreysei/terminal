@@ -5,6 +5,7 @@ import { Translations } from '../../Services/Translations';
 export const hola: CommandAction = ({
   name: "hola",
   alias: ["hula", "holi", "hi", "hello"],
+  hidden: true,
   action: (): string[] => {
     Analytics.command("hola");
 

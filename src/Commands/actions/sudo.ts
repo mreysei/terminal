@@ -4,6 +4,7 @@ import { Translations } from '../../Services/Translations';
 
 export const sudo: CommandAction = ({
   name: "sudo",
+  hidden: true,
   action: (): string[] => {
     Analytics.command("sudo");
 

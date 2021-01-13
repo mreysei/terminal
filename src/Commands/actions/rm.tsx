@@ -8,6 +8,7 @@ import React from 'react';
 
 export const rm: CommandAction = ({
   name: "rm",
+  hidden: true,
   action: (params): string[] => {
     if (params === undefined) {
       Analytics.error("rm")

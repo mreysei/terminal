@@ -45,12 +45,12 @@ export const help: CommandAction = ({
 const addCommand = (accumulator: string[], command: CommandAction) => {
   if (command.params !== undefined) {
     command.params.forEach((param) => {
-      if (param.description !== undefined) {
-        accumulator.push(transform(`${command.name} ${param.name}`, param.description))
+      if (!command.hidden) {
+        accumulator.push(transform(`${command.name} ${param.name}`, param.description ?? ""))
       }
     });
-  } else if (command.description !== undefined) {
-    accumulator.push(transform(command.name, command.description));
+  } else if (!command.hidden) {
+    accumulator.push(transform(command.name, command.description ?? ""));
   }
 }
 

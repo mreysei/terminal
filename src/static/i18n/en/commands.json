@@ -21,7 +21,7 @@
   "help": {
     "description": "Lista comandos que se pueden realizar (¡pero no todos!)",
     "response": {
-      "initial": "Estos son los comandos disponibles: INGLÉS",
+      "initial": "Estos son los comandos disponibles:",
       "specificCommand": "Este comando funciona así:",
       "final": "Pero además de estos comando... hay otros escondidos que no mencionaré..."
     }

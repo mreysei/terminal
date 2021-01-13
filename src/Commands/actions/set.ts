@@ -3,7 +3,7 @@ import { help } from '.';
 import { KeyValue } from '../KeyValue';
 import { getKeyValueFrom } from '../Events';
 import { Analytics } from '../../Services/Analytics';
-import { Translations } from '../../Services/Translations';
+import { LocaleList, Translations } from '../../Services/Translations';
 import { UserData } from '../../Services/UserData';
 
 
@@ -59,11 +59,10 @@ const getValues = (params: string[]): string[] => {
 }
 
 const setLocale = (accumulator: string[], param: KeyValue) => {
-  const locals = ["es", "en"];
   const translation = Translations().commands.set.response.locale;
 
   UserData.locale.set(param.value)
-  accumulator.push(locals.includes(param.value) ? translation.success : translation.error)
+  accumulator.push(LocaleList.includes(param.value) ? translation.success : translation.error)
 }
 
 const setTheme = (accumulator: string[], param: KeyValue) => {

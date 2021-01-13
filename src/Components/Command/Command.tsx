@@ -29,7 +29,7 @@ export const Command: FC<CommandProps> = ({ username, directory, command, output
     <span className="directory">{directory || "~"}</span>
     <span className="type">{typeForUser(username)}</span>
     <span className="command-line">{command}</span>
-    {output != null && output.map(stringToHtml)}
+    {output && output.map(stringToHtml)}
   </div>
 )
 

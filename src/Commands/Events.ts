@@ -1,6 +1,6 @@
 import { KeyValue } from './KeyValue'
 import { CommandAction } from './CommandAction'
-import { getAllCommands, getCommandsList } from './Commands'
+import { getAllCommands, getCommandList } from './Commands'
 
 export const containsAllParams = (params: string[], compareParams: string[]): boolean => {
   let haveAllParams = true
@@ -8,6 +8,14 @@ export const containsAllParams = (params: string[], compareParams: string[]): bo
     if (!params.includes(element)) haveAllParams = false
   })
   return haveAllParams
+}
+
+export const containsAnyParams = (params: string[], compareParams: string[]): boolean => {
+  let haveAnyParams = false
+  compareParams.forEach(element => {
+    if (params.includes(element)) haveAnyParams = true
+  })
+  return haveAnyParams
 }
 
 export const containsAKey = (params: string[], key: string) => {
@@ -36,7 +44,7 @@ export const getCommandByName = (name: string): CommandAction | null => {
 
   if (command === undefined) {
     const byAlias = (command: CommandAction) => command.alias?.includes(name)
-    const commandByAlias = getCommandsList().find(byAlias)
+    const commandByAlias = getCommandList().find(byAlias)
 
     return commandByAlias ?? null
   }

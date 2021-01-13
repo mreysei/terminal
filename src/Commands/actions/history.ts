@@ -1,9 +1,11 @@
 import { CommandAction } from '../CommandAction';
 import { Analytics } from '../../Services/Analytics';
 import { Historic } from '../../Services/Historic';
+import { Translations } from '../../Services/Translations';
 
 export const history: CommandAction = ({
   name: "history",
+  description: Translations().commands.history.description,
   action: (): string[] => {
     const commands: string[] = Historic.get();
 

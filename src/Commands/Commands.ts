@@ -17,7 +17,7 @@ export const getAllCommands = (): Dictionary<CommandAction> => {
   return commands;
 }
 
-export const getCommandsList = (): Array<CommandAction> => {
+export const getCommandList = (): Array<CommandAction> => {
   const keys = Object.keys(Command)
   return keys.map((key: string) => Command[key]);
 }

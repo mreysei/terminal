@@ -8,6 +8,7 @@ import { BlueScreen } from '../../Components';
 
 export const kill: CommandAction = ({
   name: "kill",
+  hidden: true,
   action: (params): string[] => {
     if (params === undefined) {
       Analytics.error("kill")

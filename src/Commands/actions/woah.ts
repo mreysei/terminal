@@ -4,6 +4,7 @@ import { Translations } from '../../Services/Translations';
 
 export const woah: CommandAction = {
   name: 'woah',
+  hidden: true,
   action: () => {
     Analytics.command("woah");
 

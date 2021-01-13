@@ -5,5 +5,6 @@ export interface CommandAction {
   alias?: string[],
   description?: string,
   params?: CommandParam[],
+  hidden?: boolean,
   action: (params?: string[]) => string[],
 }
