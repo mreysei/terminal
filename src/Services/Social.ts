@@ -29,6 +29,10 @@ export const SocialList: Social[] = [
     url: "https://twitch.com/mreysei",
   },
   {
+    key: "whakoom",
+    url: "https://whakoom.com/mreysei",
+  },
+  {
     key: "spotify",
     url: "https://open.spotify.com/user/maikelreyes96",
   },
