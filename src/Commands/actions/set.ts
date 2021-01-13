@@ -11,7 +11,7 @@ export const set: CommandAction = ({
   name: "set",
   params: [
     { name: "--username=Link", description: Translations().commands.set.params.username },
-    { name: "--locale=es", description: Translations().commands.set.params.locale },
+    // { name: "--locale=es", description: Translations().commands.set.params.locale },
     { name: "--theme=ubuntu", description: Translations().commands.set.params.theme },
   ],
   action: (params): string[] => {
