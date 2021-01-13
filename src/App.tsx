@@ -4,7 +4,7 @@ import './App.css';
 import { Analytics } from './Services/Analytics';
 import { UserData } from './Services/UserData';
 import { Translations } from './Services/Translations';
-import { error } from './Commands/actions';
+import { clear, error } from './Commands/actions';
 import { CommandAction } from './Commands/CommandAction';
 import { Historic as HistoricService } from './Services/Historic';
 import { getCommandByName } from './Commands/Events';
@@ -26,7 +26,7 @@ export const App = () => {
     const commandParams = input || []
     let command: CommandAction | null = getCommandByName(commandName) ?? error
     
-    if (command.name === 'clear') {
+    if (command.name === clear.name) {
       setLogoEnable(false)
       setHistoric([])
     } else {

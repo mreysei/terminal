@@ -4,6 +4,7 @@ import { Analytics } from '../../Services/Analytics';
 
 export const clear: CommandAction = {
   name: "clear",
+  alias: ["cls"],
   description: Translations().commands.clear.description,
   action: () => {
     Analytics.command(clear.name)
