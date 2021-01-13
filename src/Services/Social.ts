@@ -37,6 +37,10 @@ export const SocialList: Social[] = [
     url: "https://open.spotify.com/user/maikelreyes96",
   },
   {
+    key: "repository",
+    url: "https://github.com/mreysei/terminal",
+  },
+  {
     key: "email",
     url: "mailto:mreysei@hotmail.com",
   },

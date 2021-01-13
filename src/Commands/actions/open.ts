@@ -11,6 +11,7 @@ export const open: CommandAction = ({
   name: "open",
   params: [
     { name: "email", description: translations().email },
+    { name: "repository", description: translations().repository },
     { name: "work", description: translations().work },
     { name: "github", description: translations().generic.replace("{name}", "Github") },
     { name: "linkedin", description: translations().generic.replace("{name}", "Linkedin") },

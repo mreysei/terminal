@@ -35,6 +35,7 @@
   "open": {
     "params": {
       "work": "Abre en una nueva pestaña la web de LeanMind",
+      "repository": "Abre en una nueva pestaña el repositorio de este proyecto",
       "generic": "Abre en una nueva pestaña el {name} del propietario",
       "email": "Envía un correo al propietario"
     },
