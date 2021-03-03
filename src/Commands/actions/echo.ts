@@ -4,6 +4,7 @@ import { Analytics } from '../../Services/Analytics';
 
 export const echo: CommandAction = {
   name: "echo",
+  hidden: true,
   action: (params: string[] | undefined): string[] => {
     Analytics.command(echo.name)
     console.log(params)
