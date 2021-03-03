@@ -112,5 +112,11 @@
   },
   "exit": {
     "response": "Intenté cerrar la pestaña pero no tengo permisos porque no la creé yo... :("
+  },
+  "echo": {
+    "error":{
+      "params": "Necesitas escribir un texto entre comillado :v",
+      "format": "El formato esperado... no es el deseado..."
+    }
   }
 }

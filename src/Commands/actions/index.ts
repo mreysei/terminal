@@ -1,5 +1,6 @@
 export * from './clear'
 export * from './code'
+export * from './echo'
 export * from './error'
 export * from './exit'
 export * from './get'
