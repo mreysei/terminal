@@ -1,4 +1,5 @@
 export * from './clear'
+export * from './code'
 export * from './error'
 export * from './get'
 export * from './help'

@@ -102,5 +102,12 @@
       ],
       "error": "No se reconoce el parámetro '{param}'"
     }
+  },
+  "code": {
+    "params": {
+      "currentDir": "Abre el VSCode del proyecto actual"
+    },
+    "response": "Se ha abierto {url}",
+    "url": "https://github1s.com/mreysei/terminal"
   }
 }
