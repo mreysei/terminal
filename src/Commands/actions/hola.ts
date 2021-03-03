@@ -6,7 +6,7 @@ export const hola: CommandAction = ({
   name: "hola",
   alias: ["hula", "holi", "hi", "hello"],
   hidden: true,
-  action: (): string[] => {
+  action: (_): string[] => {
     Analytics.command("hola");
 
     return [Translations().commands.hola.response]

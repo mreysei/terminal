@@ -11,6 +11,7 @@ export interface Command {
   directory?: string,
   command: string,
   output?: string[],
+  onlyOutput?: boolean,
 }
 
 const typeForUser = (username: string): CommandType => {
@@ -22,7 +23,11 @@ const typeForUser = (username: string): CommandType => {
 
 type CommandProps = Command;
 
-export const Command: FC<CommandProps> = ({ username, directory, command, output = [] }) => (
+export const Command: FC<CommandProps> = ({ username, directory, command, output = [], onlyOutput = false }) => onlyOutput ? (
+  <div className="Command">
+    {output && output.map(stringToHtml)}
+  </div>
+) : (
   <div className="Command">
     <span className="username">{username || "anonymous"}@mreysei</span>
     <span className="root">:</span>

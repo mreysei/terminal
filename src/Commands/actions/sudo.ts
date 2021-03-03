@@ -5,7 +5,7 @@ import { Translations } from '../../Services/Translations';
 export const sudo: CommandAction = ({
   name: "sudo",
   hidden: true,
-  action: (): string[] => {
+  action: (_): string[] => {
     Analytics.command("sudo");
 
     const imageUrl = "https://media1.giphy.com/media/njYrp176NQsHS/giphy.webp"

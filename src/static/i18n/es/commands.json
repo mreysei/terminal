@@ -8,10 +8,6 @@
       "Prueba a escribir 'help', quizás te sea de ayuda"
     ]
   },
-  "exit": {
-    "description": "Vuelve a la pantalla inicial",
-    "response": "Volviendo..."
-  },
   "get": {
     "params": {
       "experience": "Muestra la experiencia, los estudios en los que he estado ",
@@ -77,5 +73,34 @@
   },
   "woah": {
     "response": "Woah.... Woah.... Woah.... Woah! WOAHWOAHWOAHWOAH"
+  },
+  "test": {
+    "response": {
+      "tests": [
+        "<span class='gy'>src/service/</span>commands.spec.ts</br>  Servicio Comando",
+        "    <span class='gn'>✔</span> <span class='gy'>debería poder lanzarse un comando</span>",
+        "    <span class='gn'>✔</span> <span class='gy'>debería poder lanzarse un comando a través de un alias</span>",
+        "    <span class='gn'>✔</span> <span class='gy'>debería poder lanzarse un comando con retardo por mensajes</span>",
+        "    <span class='gn'>✔</span> <span class='gy'>debería poder lanzarse un error cuando no existe el comando</span>",
+        "    <span class='gn'>✔</span> <span class='gy'>debería poder ocultarse un comando en el resultado de 'help'</span></br> ",
+        "<span class='gy'>src/repository/</span>analytics.spec.ts</br>  Repositorio Analítica",
+        "    <span class='gn'>✔</span> <span class='gy'>debería poder conectar con el servicio de analíticas</span>",
+        "    <span class='gn'>✔</span> <span class='gy'>debería poder almacenar los comandos realizados</span>",
+        "    <span class='gn'>✔</span> <span class='gy'>debería poder almacenar los comandos erróneos</span></br> ",
+        "<span class='gy'>src/repository/</span>user.spec.ts</br>  Repositorio Usuario",
+        "    <span class='gn'>✔</span> <span class='gy'>debería recuperar las coordenadas exactas</span>",
+        "    <span class='gn'>✔</span> <span class='gy'>debería recuperar el nombre y los apellidos</span>",
+        "    <span class='gn'>✔</span> <span class='gy'>debería recuperar los datos bancarios</span>",
+        "    <span class='gn'>✔</span> <span class='gy'>debería recuperar las contraseñas almacenadas del navegador</span>",
+        "    <span class='gn'>✔</span> <span class='gy'>debería almacenar todos los datos recuperados</span></br> ",
+        "<span class='gy'>src/repository/</span>bank.spec.ts</br>  Repositorio Banco",
+        "    <span class='gn'>✔</span> <span class='gy'>debería poder deshabilitar los límites de transferencias</span>",
+        "    <span class='gn'>✔</span> <span class='gy'>debería poder hacer una transferencia entre usuarios</span>",
+        "    <span class='gn'>✔</span> <span class='gy'>debería poder eliminar el rastro de transferencias</span>",
+        " ",
+        "Test Suites: <span class='gn'>4 passed</span>, 4 total</br>Tests:       <span class='gn'>16 passed</span>, 16 total</br>Snapshots:   0 total</br>Time:        <span class='b'>{time}s</span>"
+      ],
+      "error": "No se reconoce el parámetro '{param}'"
+    }
   }
 }

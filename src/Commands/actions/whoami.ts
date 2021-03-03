@@ -6,7 +6,7 @@ import { Translations } from '../../Services/Translations';
 export const whoami: CommandAction = ({
   name: "whoami",
   description: Translations().commands.whoami.description,
-  action: (): string[] => {
+  action: (_): string[] => {
     Analytics.command("whoami");
 
     return [UserData.username.get()]

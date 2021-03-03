@@ -5,21 +5,21 @@ import { Analytics } from '../../Services/Analytics';
 import { Translations } from '../../Services/Translations';
 import { Social, SocialList } from '../../Services/Social';
 
-const translations = () => Translations().commands.open.params;
+const translations = Translations().commands.open.params;
 
 export const open: CommandAction = ({
   name: "open",
   params: [
-    { name: "email", description: translations().email },
-    { name: "repository", description: translations().repository },
-    { name: "work", description: translations().work },
-    { name: "github", description: translations().generic.replace("{name}", "Github") },
-    { name: "linkedin", description: translations().generic.replace("{name}", "Linkedin") },
-    { name: "twitter", description: translations().generic.replace("{name}", "Twitter") },
-    { name: "instagram", description: translations().generic.replace("{name}", "Instagram") },
-    { name: "whakoom", description: translations().generic.replace("{name}", "Whakoom") },
-    { name: "twitch", description: translations().generic.replace("{name}", "Twitch") },
-    { name: "spotify", description: translations().generic.replace("{name}", "Spotify") },
+    { name: "email", description: translations.email },
+    { name: "repository", description: translations.repository },
+    { name: "work", description: translations.work },
+    { name: "github", description: translations.generic.replace("{name}", "Github") },
+    { name: "linkedin", description: translations.generic.replace("{name}", "Linkedin") },
+    { name: "twitter", description: translations.generic.replace("{name}", "Twitter") },
+    { name: "instagram", description: translations.generic.replace("{name}", "Instagram") },
+    { name: "whakoom", description: translations.generic.replace("{name}", "Whakoom") },
+    { name: "twitch", description: translations.generic.replace("{name}", "Twitch") },
+    { name: "spotify", description: translations.generic.replace("{name}", "Spotify") },
   ],
   action: (params): string[] => {
     const texts = Translations().commands.open

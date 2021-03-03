@@ -7,7 +7,7 @@ import { Translations } from '../../Services/Translations';
 export const help: CommandAction = ({
   name: "help",
   description: Translations().commands.help.description,
-  action: (params: string[] | undefined): string[] => {
+  action: (params): string[] => {
     const texts = Translations().commands.help
     const commands = getAllCommands()
     let initialMessage = texts.response.initial

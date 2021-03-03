@@ -6,13 +6,15 @@ import { Historic } from '../../Services/Historic';
 import { UserData } from '../../Services/UserData';
 
 interface InputProps {
+  enable: boolean,
   username: string,
-  onEnter: (command: Command) => void
+  onEnter: (command: Command) => Promise<void>
 }
 
-export const Input: FC<InputProps> = ({ onEnter, username }) => {
+export const Input: FC<InputProps> = ({ enable, onEnter, username }) => {
   const [input, setInput] = useState("")
   const [historyIndex, setHistoryIndex] = useState(0)
+  const [editingEnable, setEditingEnable] = useState(true)
   const keyPressed = useKeyPress()
   const deletePressed = useDeletePress()
   const enterPressed = useEnterPress()
@@ -38,6 +40,27 @@ export const Input: FC<InputProps> = ({ onEnter, username }) => {
   }
 
   useEffect(() => {
+    if (!editingEnable) return;
+
+    if (enterPressed) {
+      if (inputForScroll !== null) {
+        inputForScroll.scrollIntoView({ behavior: "smooth" });
+      }
+
+      setEditingEnable(false)
+      onEnter({
+        username,
+        directory: "~",
+        command: input,
+        output: [],
+      }).then(() => {
+        setHistoryIndex(0);
+        setInput("");
+        setEditingEnable(true);
+      })
+      document.getElementById('input-disable')?.setAttribute("value", "");
+    }
+    
     if (!UserData.fromMobile()) {
       if (keyPressed !== "") {
         setInput(input + keyPressed);
@@ -56,32 +79,17 @@ export const Input: FC<InputProps> = ({ onEnter, username }) => {
         updateHistory(1)
       }
     }
-
-    if (enterPressed) {
-      if (inputForScroll !== null) {
-        inputForScroll.scrollIntoView({ behavior: "smooth" });
-      }
-
-      onEnter({
-        username,
-        directory: "~",
-        command: input,
-        output: [],
-      });
-
-      setHistoryIndex(0);
-      setInput("");
-      document.getElementById('input-disable')?.setAttribute("value", "");
-    }
   }, [enterPressed, keyPressed, deletePressed, arrowUpPressed, arrowDownPressed]); // eslint-disable-line react-hooks/exhaustive-deps
 
 
   const onChange = (event: any) => setInput(event.target.value.toLowerCase())
 
-  return (
-    <div className="Input" ref={(element) => inputForScroll = element}>
+  return enable ? (
+    <div className={`Input ${editingEnable ? "active" : ""}`} ref={(element) => inputForScroll = element}>
       <Command username={username} command={input} />
       {UserData.fromMobile() && <input id="input-disable" value={input} onChange={onChange} autoFocus />}
     </div>
-  );
+  ) : (
+    <div></div>
+  )
 }

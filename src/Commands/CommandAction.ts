@@ -6,5 +6,6 @@ export interface CommandAction {
   description?: string,
   params?: CommandParam[],
   hidden?: boolean,
+  delayedPerMessage?: number,
   action: (params?: string[]) => string[],
 }

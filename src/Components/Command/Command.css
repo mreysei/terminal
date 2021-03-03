@@ -87,6 +87,38 @@
   width: 12px;
 }
 
+.Command .post, 
+.Command .experience {
+  padding: 1rem;
+  border: 2px dotted;
+}
+
+.Command .post h3, 
+.Command .experience h3 {
+  display: inline-block;
+  margin: .5rem 0;
+}
+
+.Command .test {
+  margin: .25rem 0;
+}
+
+.Command span.gy {
+  color: #7B7B76;
+}
+.Command span.b {
+  color: #78592F;
+}
+.Command span.gn {
+  color: #767F2C;
+}
+.Command span.r {
+  color: #CF3F61;
+}
+.Command span.lr {
+  color: #D18FA6;
+}
+
 @media screen and (max-width: 500px) {
   .Command .output .command {
     grid-template-columns: 1fr 1fr;

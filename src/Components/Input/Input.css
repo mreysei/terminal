@@ -4,6 +4,9 @@
   width: 8px;
   height: 16px;
   margin-bottom: -4px;
+}
+
+.Input.active > div::after {
   animation-name: inputText;
   animation-duration: 1s;
   animation-iteration-count: infinite;

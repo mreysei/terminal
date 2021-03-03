@@ -15,7 +15,7 @@ export const rm: CommandAction = ({
       return error.action();
     } else if (containsAllParams(params, ["-rf", "*"]) || containsAllParams(params, ["-rf"])) {
       Analytics.command("rm -rf")
-      ReactDOM.render(<BlueScreen />, document.getElementById('App'))
+      ReactDOM.render(<BlueScreen />, document.getElementById('root'));
       return ['¡Booom!'];
     } else {
       Analytics.error(`rm ${params.join(" ")}`)

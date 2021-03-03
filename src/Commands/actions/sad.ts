@@ -4,8 +4,9 @@ import { Translations } from '../../Services/Translations';
 
 export const sad: CommandAction = ({
   name: ":(",
+  alias: ["sad"],
   hidden: true,
-  action: (): string[] => {
+  action: (_): string[] => {
     Analytics.command(":(");
 
     return Translations().commands.sad.responses as string[]

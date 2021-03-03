@@ -6,7 +6,7 @@ import { Translations } from '../../Services/Translations';
 export const history: CommandAction = ({
   name: "history",
   description: Translations().commands.history.description,
-  action: (): string[] => {
+  action: (_): string[] => {
     const commands: string[] = Historic.get();
 
     Analytics.command("history");

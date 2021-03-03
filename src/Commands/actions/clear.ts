@@ -6,7 +6,7 @@ export const clear: CommandAction = {
   name: "clear",
   alias: ["cls"],
   description: Translations().commands.clear.description,
-  action: () => {
+  action: (_): string[] => {
     Analytics.command(clear.name)
 
     return [];

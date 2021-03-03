@@ -18,16 +18,18 @@ export const getExperience = (): string[] => Translations().info.experience.map(
 
 const transform = (experience: Experience): String => {
   return [
+    '<div class="experience">',
     getName(experience.name),
     getUrl(experience.url),
     "<br />",
     experience.positions.map(getPosition).join(""),
-    getDescription(experience.description)
+    getDescription(experience.description),
+    '</div>',
   ].join("")
 }
 
 const getName = (name: String) =>
-  `<h3 class="inline">${name}</h3>`
+  `<h3>${name}</h3>`
 
 const getUrl = (url: String | undefined) => url
   ? ` <small>(<a href='${url}' target='_blank'>${url}</a>)</small>`

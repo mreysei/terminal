@@ -6,7 +6,7 @@ import { Translations } from '../../Services/Translations';
 export const pwd: CommandAction = ({
   name: "pwd",
   description: Translations().commands.pwd.description,
-  action: (): string[] => {
+  action: (_): string[] => {
     Analytics.command("pwd");
 
     return [UserData.location()]
