@@ -1,6 +1,7 @@
 export * from './clear'
 export * from './code'
 export * from './error'
+export * from './exit'
 export * from './get'
 export * from './help'
 export * from './history'

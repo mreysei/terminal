@@ -109,5 +109,8 @@
     },
     "response": "Se ha abierto {url}",
     "url": "https://github1s.com/mreysei/terminal"
+  },
+  "exit": {
+    "response": "Intenté cerrar la pestaña pero no tengo permisos porque no la creé yo... :("
   }
 }
