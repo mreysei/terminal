@@ -40,7 +40,7 @@ export const Input: FC<InputProps> = ({ enable, onEnter, username }) => {
   }
 
   useEffect(() => {
-    if (!editingEnable) return;
+    if (!editingEnable || !enable) return;
 
     if (enterPressed) {
       if (inputForScroll !== null) {

@@ -34,9 +34,9 @@ export const App = () => {
       if (command.name === error.name) 
       Analytics.error(commandInput.command) 
       if (command.delayedPerMessage) {
-        const timeStart = Date.now()
         setInputEnable(false)
-        const currentMessages = command.action(commandParams)
+        const timeStart = Date.now()
+        const currentMessages = [...command.action(commandParams)]
         const commandOutput: Command = { ...commandInput, onlyOutput: true }
         const delayed = setInterval(() => {
           if (currentMessages.length > 0) {
