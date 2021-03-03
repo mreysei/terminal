@@ -14,7 +14,8 @@ export const kill: CommandAction = ({
       Analytics.error("kill")
       return error.action();
     } else if (containsAllParams(params, ["-9"])) {
-      ReactDOM.render(<BlueScreen />, document.getElementById('App'));
+      Analytics.error("kill -9")
+      ReactDOM.render(<BlueScreen />, document.getElementById('root'));
       return ['¡Booom!'];
     } else {
       Analytics.error(`kill ${params.join(" ")}`)
